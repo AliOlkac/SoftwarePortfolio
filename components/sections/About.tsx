@@ -13,6 +13,7 @@ import * as FaIcons from "react-icons/fa";
 import * as SiIcons from "react-icons/si";
 import Container from '@/components/ui/Container';
 import Card from '@/components/ui/Card';
+import GitHubContribution from '@/components/GitHubContribution';
 
 // Dinamik olarak icon alıp görüntüleyen yardımcı fonksiyon
 const DynamicIcon = ({ iconName, color }: { iconName: string; color: string }) => {
@@ -56,26 +57,26 @@ const TechItem = ({ name, iconName, color }: { name: string; iconName: string; c
     }}
     className="bg-background/30 border border-primary/10 rounded-lg p-4 flex flex-col items-center text-center transition-all duration-300 hover:border-primary/40 hover:shadow-neon-blue"
   >
-    <div className="w-12 h-12 flex items-center justify-center mb-3 text-2xl">
+    <div className="w-14 h-14 flex items-center justify-center mb-3 text-3xl transition-all duration-300 group-hover:scale-110">
       <DynamicIcon iconName={iconName} color={color} />
     </div>
-    <span className="font-medium text-white">{name}</span>
+    <span className="font-medium text-white text-sm md:text-base">{name}</span>
   </motion.div>
 );
 
 // Eğitim verileri
 const educationData = [
   {
-    period: "2020 - Günümüz",
+    period: "2021 - 2025",
     title: "Bilgisayar Mühendisliği Lisans",
-    institution: "İstanbul Teknik Üniversitesi",
+    institution: "Balıkesir Üniversitesi",
     description: "Bilgisayar mühendisliği bölümünde lisans eğitimi"
   },
   {
-    period: "2016 - 2020",
+    period: "2017 - 2021",
     title: "Lise Eğitimi",
     institution: "Simav Fen Lisesi",
-    description: "Fen lisesinde yoğun matematik ve fen eğitimi"
+    description: "Fen lisesinde Lise eğitimimi tamamladım."
   },
 ];
 
@@ -121,7 +122,7 @@ const interestsData = [
 const skillCategories = [
   {
     title: "Web Teknolojileri",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML/CSS"]
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML/CSS","Spline"]
   },
   {
     title: "Programlama Dilleri",
@@ -129,15 +130,15 @@ const skillCategories = [
   },
   {
     title: "Veri & AI",
-    skills: ["TensorFlow", "scikit-learn", "Veri Analizi"]
+    skills: ["TensorFlow", "scikit-learn","Numpy", "Pandas", "Veri Analizi"]
   },
   {
     title: "Mobil & Oyun",
     skills: ["React Native", "Unity"]
   },
   {
-    title: "DevOps & Araçlar",
-    skills: ["Git", "Docker", "MongoDB", "Firebase", "GraphQL"]
+    title: "DevOps & Veritabanı",
+    skills: ["Git", "MongoDB", "MariaDB", "MySQL"]
   }
 ];
 
@@ -393,7 +394,7 @@ const About = () => {
                   <h4 className="text-lg font-semibold mb-3 text-accent text-center">{category.title}</h4>
                   <ul className="space-y-2">
                     {category.skills.map((skill, idx) => (
-                      <li key={idx} className="text-gray-300 text-center py-1 border-b border-accent/10 last:border-0 transition-colors duration-300 hover:text-white">
+                      <li key={idx} className="text-gray-300 text-center py-1 border-b border-accent/10 last:border-0 transition-colors duration-300 hover:text-white hover:scale-105">
                         {skill}
                       </li>
                     ))}
@@ -403,35 +404,56 @@ const About = () => {
             </div>
 
             {/* Tech Stack Icons Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 pt-4">
-              {/* Web Teknolojileri */}
-              <TechItem name="React" iconName="FaReact" color="primary" />
-              <TechItem name="Next.js" iconName="SiNextdotjs" color="white" />
-              <TechItem name="TypeScript" iconName="SiTypescript" color="primary" />
-              <TechItem name="Tailwind CSS" iconName="SiTailwindcss" color="secondary" />
-              
-              {/* Programlama Dilleri */}
-              <TechItem name="JavaScript" iconName="SiJavascript" color="highlight" />
-              <TechItem name="Python" iconName="FaPython" color="secondary" />
-              <TechItem name="C#" iconName="SiCsharp" color="accent" />
-              
-              {/* Veri & AI */}
-              <TechItem name="TensorFlow" iconName="SiTensorflow" color="primary" />
-              <TechItem name="scikit-learn" iconName="SiScikit" color="accent" />
-              
-              {/* Mobil & Oyun */}
-              <TechItem name="React Native" iconName="SiReact" color="highlight" />
-              <TechItem name="Unity" iconName="SiUnity" color="white" />
-              
-              {/* DevOps & Araçlar */}
-              <TechItem name="Git" iconName="FaGitAlt" color="accent" />
-              <TechItem name="Docker" iconName="FaDocker" color="primary" />
-              <TechItem name="MongoDB" iconName="SiMongodb" color="highlight" />
-              <TechItem name="Firebase" iconName="SiFirebase" color="accent" />
-              <TechItem name="GraphQL" iconName="SiGraphql" color="secondary" />
-              <TechItem name="HTML/CSS" iconName="FaHtml5" color="primary" />
+            <div className="pt-4">
+              <h4 className="text-lg font-semibold mb-6 text-white text-center pb-2 border-b border-accent/20">Kullandığım Teknolojiler</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                {/* Web Teknolojileri */}
+                <TechItem name="React" iconName="FaReact" color="primary" />
+                <TechItem name="Next.js" iconName="SiNextdotjs" color="white" />
+                <TechItem name="TypeScript" iconName="SiTypescript" color="primary" />
+                <TechItem name="Tailwind CSS" iconName="SiTailwindcss" color="secondary" />
+                <TechItem name="HTML/CSS" iconName="FaHtml5" color="primary" />
+                <TechItem name="Spline" iconName="Si3Js" color="highlight" />
+                
+                {/* Programlama Dilleri */}
+                <TechItem name="JavaScript" iconName="SiJavascript" color="highlight" />
+                <TechItem name="Python" iconName="FaPython" color="secondary" />
+                <TechItem name="C#" iconName="SiCsharp" color="accent" />
+                
+                {/* Veri & AI */}
+                <TechItem name="TensorFlow" iconName="SiTensorflow" color="primary" />
+                <TechItem name="scikit-learn" iconName="SiScikitlearn" color="accent" />
+                <TechItem name="Numpy" iconName="SiNumpy" color="secondary" />
+                <TechItem name="Pandas" iconName="SiPandas" color="primary" />
+                <TechItem name="Veri Analizi" iconName="FaChartBar" color="highlight" />
+                
+                {/* Mobil & Oyun */}
+                <TechItem name="React Native" iconName="SiReact" color="highlight" />
+                <TechItem name="Unity" iconName="SiUnity" color="white" />
+                
+                {/* DevOps & Veritabanı */}
+                <TechItem name="Git" iconName="FaGitAlt" color="accent" />
+                <TechItem name="MongoDB" iconName="SiMongodb" color="highlight" />
+                <TechItem name="MariaDB" iconName="SiMariadb" color="secondary" />
+                <TechItem name="MySQL" iconName="SiMysql" color="primary" />
+              </div>
             </div>
           </Card>
+        </motion.div>
+
+        {/* GitHub Contribution Graf */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-12"
+          whileHover={{ 
+            y: -8, 
+            transition: { duration: 0.2 } 
+          }}
+        >
+          <GitHubContribution />
         </motion.div>
 
         {/* İletişim Bağlantısı */}
@@ -442,19 +464,8 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-gray-300 mb-6">
-            Projeleriniz için iş birliği yapmak veya sorularınız için benimle iletişime geçebilirsiniz.
-          </p>
-          <a 
-            href="#contact" 
-            className="px-6 py-3 rounded-md font-medium text-white bg-primary/10 border border-primary/50 hover:bg-primary/20 hover:shadow-neon-blue transition-all duration-300 inline-flex items-center"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            <FaIcons.FaEnvelope className="mr-2" /> İletişime Geç
-          </a>
+          
+          
         </motion.div>
       </Container>
     </section>

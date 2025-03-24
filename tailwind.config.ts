@@ -14,6 +14,7 @@ const config: Config = {
         secondary: '#9d00ff',   // Neon mor
         accent: '#ff00e5',      // Neon pembe
         highlight: '#00ff66',   // Neon yeşil
+        orange: '#ffa500',      // Orange
         text: '#ffffff',
         'text-secondary': '#a0aec0',
       },

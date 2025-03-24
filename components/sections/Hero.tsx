@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { siteConfig } from '@/lib/constants'
 import Button from '@/components/ui/Button'
 import Container from '@/components/ui/Container'
 import Spline from '@splinetool/react-spline';
@@ -48,29 +47,32 @@ const Hero = () => {
       {/* İçerik */}
       <Container className="relative z-30">
         <div className="flex flex-col items-center text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="heading-1 mb-6"
-          >
-            <span className="neon-text">
-              {siteConfig.name}
-            </span>
-            <br />
-            <span className="text-gradient py-2 block">
-              {siteConfig.title}
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl text-gray-300 max-w-2xl mb-10"
-          >
-            {siteConfig.description}
-          </motion.p>
+          <div className="mb-6">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl md:text-6xl font-bold leading-tight mb-4 neon-text"
+            >
+              Ali Olkaç
+            </motion.h1>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-2xl md:text-4xl font-bold leading-tight mb-4 text-gradient"
+            >
+              Full-Stack Ninja Developer
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg text-text-secondary max-w-2xl"
+            >
+             Modern teknolojilerle sağlam, ölçeklenebilir çözümler geliştiriyorum. Kod yazarken sadece çözüm değil, değer üretmeye odaklanıyorum —  <span className="text-orange">Ninja disipliniyle .</span>
+            </motion.p>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
