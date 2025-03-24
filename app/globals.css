@@ -4,10 +4,11 @@
 
 @layer base {
   :root {
-    --background: #181817;
-    --primary: #1b45d7;
-    --secondary: #19327f;
-    --accent: #021fa0;
+    --background: #0f0f12;
+    --primary: #00b3ff;
+    --secondary: #9d00ff;
+    --accent: #ff00e5;
+    --highlight: #00ff66;
     --text: #ffffff;
     --text-secondary: #a0aec0;
   }
@@ -40,7 +41,23 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+
+  .neon-border {
+    @apply border border-primary shadow-neon-blue;
+  }
+
+  .neon-text {
+    @apply text-primary animate-glow;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-background/30 border border-white/10;
+  }
+
+  .neon-button {
+    @apply relative bg-transparent border border-primary text-primary overflow-hidden transition-all duration-300 hover:shadow-neon-blue hover:text-background hover:bg-primary;
   }
 }
 
@@ -59,8 +76,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(27, 69, 215, 0.5);
-  @apply rounded-full;
+  @apply bg-primary/50 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {

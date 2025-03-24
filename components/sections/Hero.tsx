@@ -4,13 +4,46 @@ import { motion } from 'framer-motion'
 import { siteConfig } from '@/lib/constants'
 import Button from '@/components/ui/Button'
 import Container from '@/components/ui/Container'
+import Spline from '@splinetool/react-spline';
 import StarsCanvas from '@/components/ui/StarBackground'
+import { Suspense, useEffect, useState } from 'react';
 
 const Hero = () => {
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    // Tarayıcı ortamında olduğumuzdan emin olalım
+    if (typeof window !== 'undefined') {
+      // İlk yüklemede ekran genişliğini kontrol et
+      const checkIsDesktop = () => window.innerWidth >= 768;
+      setIsDesktop(checkIsDesktop());
+
+      // Ekran boyutu değiştiğinde güncelle
+      const handleResize = () => {
+        setIsDesktop(checkIsDesktop());
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Yıldızlı arka plan */}
       <StarsCanvas />
+      
+      {/* Spline 3D Arka Plan - Sadece masaüstünde göster */}
+      {isDesktop && (
+        <div className="absolute inset-0 z-10">
+          <Suspense fallback={<div className="w-full h-full bg-transparent" />}>
+            <Spline
+              scene="https://prod.spline.design/C-8uoB8bQZdwZag5/scene.splinecode" 
+              className="w-full h-full"
+            />
+          </Suspense>
+        </div>
+      )}
       
       {/* İçerik */}
       <Container className="relative z-30">
@@ -21,11 +54,11 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="heading-1 mb-6"
           >
-            <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-primary to-purple-500">
+            <span className="neon-text">
               {siteConfig.name}
             </span>
             <br />
-            <span className="text-white">
+            <span className="text-gradient py-2 block">
               {siteConfig.title}
             </span>
           </motion.h1>
@@ -34,7 +67,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl text-gray-300 max-w-2xl mb-8"
+            className="text-xl text-gray-300 max-w-2xl mb-10"
           >
             {siteConfig.description}
           </motion.p>
@@ -43,12 +76,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex gap-4"
+            className="flex gap-6"
           >
             <Button 
               size="lg" 
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-gradient-to-r from-blue-600 to-primary hover:from-blue-700 hover:to-primary/90"
+              className="neon-button"
             >
               Projelerimi Gör
             </Button>
@@ -56,7 +89,7 @@ const Hero = () => {
               size="lg" 
               variant="outline"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-primary/50 hover:border-primary"
+              className="neon-button border-secondary text-secondary hover:bg-secondary hover:shadow-neon-purple"
             >
               İletişime Geç
             </Button>
@@ -71,7 +104,7 @@ const Hero = () => {
         transition={{ delay: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30"
       >
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full p-1">
+        <div className="w-6 h-10 border-2 border-primary/30 rounded-full p-1 hover:border-primary hover:shadow-neon-blue transition-all duration-300">
           <motion.div
             animate={{
               y: [0, 12, 0],
@@ -81,7 +114,7 @@ const Hero = () => {
               repeat: Infinity,
               repeatType: "loop",
             }}
-            className="w-1.5 h-1.5 bg-white/50 rounded-full"
+            className="w-1.5 h-1.5 bg-primary rounded-full"
           />
         </div>
       </motion.div>

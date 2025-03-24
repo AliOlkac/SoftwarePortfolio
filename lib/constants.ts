@@ -1,6 +1,7 @@
 // Site bilgileri
 export const siteConfig = {
   name: 'Ali Olkaç',
+  siteName: 'Ali Olkaç',
   title: 'Bilgisayar Mühendisliği Öğrencisi & Full-Stack Developer',
   description: 'Modern web teknolojileri ile kullanıcı dostu ve performanslı uygulamalar geliştiriyorum.',
   url: 'https://aliolkac.com',
@@ -10,30 +11,36 @@ export const siteConfig = {
     linkedin: 'https://linkedin.com/in/aliolkac',
     email: 'mailto:aliolkac@gmail.com',
   },
+  socialLinks: {
+    github: 'https://github.com/aliolkac',
+    twitter: 'https://twitter.com/aliolkac',
+    linkedin: 'https://linkedin.com/in/aliolkac',
+  },
+  email: 'aliolkac@gmail.com'
 }
 
 // Navigasyon linkleri
 export const navLinks = [
-  { name: 'Hakkımda', href: '#about' },
-  { name: 'Projeler', href: '#projects' },
-  { name: 'CV', href: '#cv' },
-  { name: 'İletişim', href: '#contact' },
+  { title: 'Hakkımda', path: '#about', name: 'Hakkımda', href: '#about' },
+  { title: 'Projeler', path: '#projects', name: 'Projeler', href: '#projects' },
+  { title: 'CV', path: '#cv', name: 'CV', href: '#cv' },
+  { title: 'İletişim', path: '#contact', name: 'İletişim', href: '#contact' },
 ]
 
-// Teknoloji stack'i
+// Teknoloji stack'i - iconName kullanarak React componenti içinde ilgili iconu göstereceğiz
 export const techStack = [
-  { name: 'React', icon: '⚛️' },
-  { name: 'Next.js', icon: '▲' },
-  { name: 'TypeScript', icon: 'TS' },
-  { name: 'Tailwind CSS', icon: '🎨' },
-  { name: 'Node.js', icon: '🟢' },
-  { name: 'Python', icon: '🐍' },
-  { name: 'MongoDB', icon: '🍃' },
-  { name: 'Firebase', icon: '🔥' },
-  { name: 'Git', icon: '📊' },
-  { name: 'Docker', icon: '🐋' },
-  { name: 'AWS', icon: '☁️' },
-  { name: 'GraphQL', icon: '◼️' },
+  { name: 'React', iconName: 'FaReact', color: 'primary' },
+  { name: 'Next.js', iconName: 'SiNextdotjs', color: 'white' },
+  { name: 'TypeScript', iconName: 'SiTypescript', color: 'primary' },
+  { name: 'Tailwind CSS', iconName: 'SiTailwindcss', color: 'secondary' },
+  { name: 'Node.js', iconName: 'FaNodeJs', color: 'highlight' },
+  { name: 'Python', iconName: 'FaPython', color: 'secondary' },
+  { name: 'MongoDB', iconName: 'SiMongodb', color: 'highlight' },
+  { name: 'Firebase', iconName: 'SiFirebase', color: 'accent' },
+  { name: 'Git', iconName: 'FaGitAlt', color: 'accent' },
+  { name: 'Docker', iconName: 'FaDocker', color: 'primary' },
+  { name: 'AWS', iconName: 'FaAws', color: 'secondary' },
+  { name: 'GraphQL', iconName: 'SiGraphql', color: 'accent' },
 ]
 
 // Projeler
