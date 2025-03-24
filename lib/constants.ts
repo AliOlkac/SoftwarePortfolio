@@ -22,12 +22,18 @@ export const navLinks = [
 
 // Teknoloji stack'i
 export const techStack = [
-  { name: 'React', icon: 'react' },
-  { name: 'Next.js', icon: 'nextjs' },
-  { name: 'TypeScript', icon: 'typescript' },
-  { name: 'Tailwind CSS', icon: 'tailwind' },
-  { name: 'Node.js', icon: 'nodejs' },
-  { name: 'Python', icon: 'python' },
+  { name: 'React', icon: '⚛️' },
+  { name: 'Next.js', icon: '▲' },
+  { name: 'TypeScript', icon: 'TS' },
+  { name: 'Tailwind CSS', icon: '🎨' },
+  { name: 'Node.js', icon: '🟢' },
+  { name: 'Python', icon: '🐍' },
+  { name: 'MongoDB', icon: '🍃' },
+  { name: 'Firebase', icon: '🔥' },
+  { name: 'Git', icon: '📊' },
+  { name: 'Docker', icon: '🐋' },
+  { name: 'AWS', icon: '☁️' },
+  { name: 'GraphQL', icon: '◼️' },
 ]
 
 // Projeler
