@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
+import Navbar from '@/components/shared/Navbar'
+import Footer from '@/components/shared/Footer'
 
 // Font tanımlamaları
 const inter = Inter({ 
@@ -44,7 +46,9 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${inter.variable} ${poppins.variable}`}>
       <body className="min-h-screen bg-background text-text antialiased">
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )
