@@ -84,40 +84,13 @@ html {
   @apply bg-primary;
 }
 
-/* Proje Kartları için 3D Flip Efekti */
-.flip-card {
-  perspective: 900px;
+/* Card Hover Effects */
+.card-hover {
+  transition: all 0.3s ease;
 }
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 1500ms;
-  transform-style: preserve-3d;
-  border-radius: 1rem;
-}
-
-.flip-card:hover .flip-card-inner {
-  cursor: pointer;
-  transform: rotateY(180deg) rotateZ(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.flip-card-back {
-  transform: rotateY(180deg) rotateZ(180deg);
+.card-hover:hover {
+  transform: translateY(-5px);
 }
 
 /* Neon Border Glow Effect */
@@ -127,13 +100,16 @@ html {
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.flip-card:hover .glow-border {
-  box-shadow: 0 0 20px rgba(0, 255, 102, 0.9);
-  border-color: rgba(0, 255, 102, 0.9) !important;
+.hover\:shadow-neon-blue:hover {
+  box-shadow: 0 0 15px rgba(0, 179, 255, 0.8);
 }
 
 .hover\:shadow-neon-green:hover {
   box-shadow: 0 0 15px rgba(0, 255, 102, 0.8);
+}
+
+.hover\:shadow-neon-purple:hover {
+  box-shadow: 0 0 15px rgba(157, 0, 255, 0.8);
 }
 
 /* Glass Effect */
@@ -148,4 +124,55 @@ html {
 .neon-text {
   text-shadow: 0 0 10px rgba(0, 255, 179, 0.7), 0 0 20px rgba(0, 255, 179, 0.5);
   color: rgba(0, 255, 179, 1);
+}
+
+/* Sertifika Kartı Özel Efekti */
+.certificate-card {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.certificate-card::before,
+.certificate-card::after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  background-color: rgba(0, 255, 102, 0.2);
+  z-index: 5;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.certificate-card::before {
+  top: 0;
+  right: 0;
+  border-radius: 0 15px 0 100%;
+}
+
+.certificate-card::after {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100% 0 15px;
+}
+
+.certificate-card:hover::before,
+.certificate-card:hover::after {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.certificate-card:hover .pdf-download-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pdf indirme butonu */
+.pdf-download-button {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
 } 

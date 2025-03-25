@@ -96,67 +96,52 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({
 }) => {
   return (
     <motion.div
-      className="flip-card w-full h-[320px] cursor-pointer"
+      className="relative w-full h-[480px] rounded-lg overflow-hidden glass-effect cursor-pointer group"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: project.id * 0.1 }}
       viewport={{ once: true }}
+      whileHover={{ y: -5 }}
       onClick={onClick}
     >
-      <div className="flip-card-inner relative w-full h-full">
-        {/* Ön yüz */}
-        <div className="flip-card-front absolute w-full h-full">
-          <div className="relative w-full h-full rounded-lg overflow-hidden">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              style={{ objectFit: "cover" }}
-              className="z-0 brightness-[0.25]"
-            />
-            <div className="absolute inset-0 z-10 p-6 flex flex-col justify-between">
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag: string, index: number) => (
-                  <span
-                    key={index}
-                    className="text-xs px-2 py-1 bg-primary/20 text-highlight rounded-full border border-highlight/40"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <h3 className="text-2xl font-bold text-white neon-text">
-                {project.title}
-              </h3>
-            </div>
-            <div className="absolute inset-0 border-3 border-highlight/60 rounded-lg z-20 glow-border"></div>
-          </div>
-        </div>
-
-        {/* Arka yüz */}
-        <div className="flip-card-back absolute w-full h-full">
-          <div className="relative w-full h-full rounded-lg overflow-hidden glass-effect">
-            <div className="p-6 flex flex-col justify-between h-full">
-              <div>
-                <h3 className="text-xl font-bold text-highlight mb-4">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-white/90">{project.description}</p>
-              </div>
-              <button
-                className="mt-4 self-center py-2 px-4 bg-highlight/20 text-highlight border border-highlight/50 rounded-md hover:bg-highlight/30 transition-colors duration-300"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onClick();
-                }}
-              >
-                Daha Fazla Bilgi
-              </button>
-            </div>
-            <div className="absolute inset-0 border-3 border-highlight/60 rounded-lg z-20 glow-border"></div>
-          </div>
+      <div className="relative w-full h-[65%] bg-black/40">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            style={{ objectFit: "cover" }}
+            className="z-0 brightness-[0.9] transition-all duration-300 group-hover:scale-105"
+          />
         </div>
       </div>
+      <div className="p-5 h-[35%] flex flex-col justify-between bg-background/90 transition-all duration-300 group-hover:bg-background/80">
+        <div>
+          <div className="flex flex-wrap gap-2 mb-2">
+            {project.tags.map((tag: string, index: number) => (
+              <span
+                key={index}
+                className="text-xs px-2 py-1 bg-highlight/20 text-highlight rounded-full border border-highlight/40 group-hover:bg-highlight/30 group-hover:border-highlight/70 transition-all duration-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <h3 className="text-xl font-bold text-white group-hover:text-highlight transition-colors duration-300 mb-2">
+            {project.title}
+          </h3>
+        </div>
+        <button
+          className="self-start py-1.5 px-4 bg-highlight/20 text-highlight border border-highlight/40 rounded-md hover:bg-highlight/30 transition-colors duration-300 text-sm font-medium"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClick();
+          }}
+        >
+          Daha Fazla Bilgi
+        </button>
+      </div>
+      <div className="absolute inset-0 border border-highlight/20 rounded-lg z-20 group-hover:border-highlight/60 group-hover:shadow-neon-green transition-all duration-300"></div>
     </motion.div>
   );
 };
@@ -169,7 +154,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 bg-background/20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -178,14 +163,14 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 neon-text">Projelerim</h2>
+          <h2 className="text-4xl font-bold mb-4 text-highlight">Projelerim</h2>
           <p className="text-white/80 max-w-2xl mx-auto">
             Geliştirdiğim başlıca projeler ile yazılım dünyasındaki
             deneyimlerimi keşfedin.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {projects.map((project) => (
             <ProjectCard
               key={project.id}

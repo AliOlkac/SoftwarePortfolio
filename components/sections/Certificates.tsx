@@ -11,10 +11,10 @@ interface Certificate {
   issuer: string;
   date: string;
   image: string;
-  credential: string;
+  pdfFile: string;
 }
 
-// Sertifikalar (örnek veri - gerçek sertifikalarınızla değiştirin)
+// Sertifikalar
 const certificates: Certificate[] = [
   {
     id: 1,
@@ -22,7 +22,7 @@ const certificates: Certificate[] = [
     issuer: "Udemy",
     date: "2023",
     image: "/certificates/UdemyWebGelistirme_page-0001.jpg",
-    credential: "https://udemy.com/certificate/123456",
+    pdfFile: "/certificates/UdemyWebGelistirme.pdf",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const certificates: Certificate[] = [
     issuer: "Coursera",
     date: "2023",
     image: "/certificates/MetaReactBasic.jpg",
-    credential: "https://coursera.org/verify/123456",
+    pdfFile: "/certificates/MetaReactBasic.pdf",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const certificates: Certificate[] = [
     issuer: "DeepLearning.AI",
     date: "2023",
     image: "/certificates/MachineLearningSpeacialisation.jpg",
-    credential: "https://deeplearning.ai/certificate/123456",
+    pdfFile: "/certificates/MachineLearningSpeacialisation.pdf",
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const certificates: Certificate[] = [
     issuer: "DeepLearning.AI",
     date: "2023",
     image: "/certificates/NeuralNetworksAndDeepLearning.jpg",
-    credential: "https://deeplearning.ai/verify/123456",
+    pdfFile: "/certificates/NeuralNetworksAndDeepLearning.pdf",
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ const certificates: Certificate[] = [
     issuer: "DeepLearning.AI",
     date: "2023",
     image: "/certificates/SupervisedMachineLearning.jpg",
-    credential: "https://deeplearning.ai/certificate/123456",
+    pdfFile: "/certificates/SupervisedMachineLearning.pdf",
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ const certificates: Certificate[] = [
     issuer: "DeepLearning.AI",
     date: "2023",
     image: "/certificates/AdvancedLearningAlgorithms.jpg",
-    credential: "https://deeplearning.ai/certificate/123456",
+    pdfFile: "/certificates/AdvancedLearningAlgorithms.pdf",
   },
   {
     id: 7,
@@ -70,7 +70,7 @@ const certificates: Certificate[] = [
     issuer: "DeepLearning.AI",
     date: "2023",
     image: "/certificates/UnsupervisedLearningRecommenders.jpg",
-    credential: "https://deeplearning.ai/certificate/123456",
+    pdfFile: "/certificates/UnsupervisedLearningRecommenders.pdf",
   },
 ];
 
@@ -80,16 +80,15 @@ const CertificateCard: React.FC<{ certificate: Certificate }> = ({
 }) => {
   return (
     <motion.div
-      className="relative w-full h-[280px] rounded-lg overflow-hidden glass-effect cursor-pointer group"
+      className="relative w-full h-[380px] rounded-lg overflow-hidden glass-effect cursor-pointer group certificate-card"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: certificate.id * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
-      onClick={() => window.open(certificate.credential, "_blank")}
     >
-      <div className="relative w-full h-full bg-black/40">
-        <div className="absolute inset-0 flex items-center justify-center p-4">
+      <div className="relative w-full h-[65%] bg-black/40">
+        <div className="absolute inset-0 flex items-center justify-center">
           <Image
             src={certificate.image}
             alt={certificate.title}
@@ -98,24 +97,39 @@ const CertificateCard: React.FC<{ certificate: Certificate }> = ({
             className="z-0 brightness-[0.9] p-2 transition-all duration-300 group-hover:scale-105"
           />
         </div>
-        <div className="absolute inset-0 z-10 p-6 flex flex-col justify-between bg-gradient-to-t from-background/90 via-background/60 to-transparent transition-all duration-300 group-hover:from-primary/30 group-hover:via-background/40">
-          <div className="mt-auto">
-            <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors duration-300">
-              {certificate.title}
-            </h3>
-            <p className="text-sm text-gray-300 mt-1 group-hover:text-white/90 transition-colors duration-300">
-              {certificate.issuer}
-            </p>
-          </div>
-          <div className="flex justify-between items-end mt-2">
-            <p className="text-xs text-gray-400">{certificate.date}</p>
-            <span className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full border border-primary/40 group-hover:bg-primary/30 group-hover:border-primary/70 transition-all duration-300">
-              Sertifika
-            </span>
-          </div>
+        
+        {/* Hover efekti ile görünür olan PDF indirme butonu */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <a 
+            href={certificate.pdfFile}
+            download
+            className="pdf-download-button py-2 px-4 bg-highlight/20 text-highlight border border-highlight/40 rounded-md hover:bg-highlight/40 transition-all duration-300 flex items-center space-x-2 opacity-0 transform translate-y-4 z-20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>PDF İndir</span>
+          </a>
         </div>
-        <div className="absolute inset-0 border border-highlight/20 rounded-lg z-20 group-hover:border-primary/60 group-hover:shadow-neon-blue transition-all duration-300"></div>
       </div>
+      <div className="p-5 h-[35%] flex flex-col justify-between bg-background/90 transition-all duration-300 group-hover:bg-background/80 relative z-10">
+        <div>
+          <h3 className="text-xl font-bold text-white group-hover:text-highlight transition-colors duration-300 mb-1">
+            {certificate.title}
+          </h3>
+          <p className="text-sm text-gray-300 group-hover:text-white/90 transition-colors duration-300">
+            {certificate.issuer}
+          </p>
+        </div>
+        <div className="flex justify-between items-center">
+          <p className="text-xs text-gray-400">{certificate.date}</p>
+          <span className="text-xs px-2 py-1 bg-highlight/20 text-highlight rounded-full border border-highlight/40 group-hover:bg-highlight/30 group-hover:border-highlight/70 transition-all duration-300">
+            Sertifika
+          </span>
+        </div>
+      </div>
+      <div className="absolute inset-0 border border-highlight/20 rounded-lg z-30 group-hover:border-highlight/60 group-hover:shadow-neon-green transition-all duration-300 pointer-events-none"></div>
     </motion.div>
   );
 };
@@ -131,7 +145,7 @@ const Certificates = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 neon-text">Sertifikalarım</h2>
+          <h2 className="text-4xl font-bold mb-4 text-highlight">Sertifikalarım</h2>
           <p className="text-white/80 max-w-2xl mx-auto">
             Tamamladığım kurslar ve kazandığım sertifikalar ile sürekli kendimi geliştiriyorum.
           </p>

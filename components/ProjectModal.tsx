@@ -2,7 +2,6 @@
 
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 
 // Proje tipi tanımlaması - Projects.tsx ile aynı
@@ -76,32 +75,20 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             </button>
             
             {/* Proje Detayları */}
-            <div className="flex flex-col lg:flex-row">
-              {/* Görsel Alanı */}
-              <div className="relative lg:w-1/2 h-[300px] lg:h-auto">
-                <Image 
-                  src={project.image} 
-                  alt={project.title}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-transparent" />
-              </div>
-              
+            <div className="flex flex-col">
               {/* İçerik Alanı */}
-              <div className="lg:w-1/2 p-6 flex flex-col">
-                <h2 className="text-3xl font-bold mb-4 neon-text">{project.title}</h2>
+              <div className="p-8 flex flex-col">
+                <h2 className="text-3xl font-bold mb-4 text-highlight">{project.title}</h2>
                 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag: string, index: number) => (
-                    <span key={index} className="text-xs px-2 py-1 bg-primary/20 text-highlight rounded-full border border-highlight/40">
+                    <span key={index} className="text-xs px-2 py-1 bg-highlight/20 text-highlight rounded-full border border-highlight/40">
                       {tag}
                     </span>
                   ))}
                 </div>
                 
-                <p className="text-gray-200 mb-6 flex-grow">{project.description}</p>
+                <p className="text-gray-200 mb-6 flex-grow whitespace-pre-line">{project.description}</p>
                 
                 <Link 
                   href={project.link} 
