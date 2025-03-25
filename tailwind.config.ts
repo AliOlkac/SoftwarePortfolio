@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+        '3': '3px',
+      },
       colors: {
         background: '#0f0f12',
         primary: '#00b3ff',     // Neon mavi

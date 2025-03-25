@@ -5,11 +5,13 @@ import { motion } from 'framer-motion';
 import { navLinks, siteConfig } from '@/lib/constants';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { MdEmail } from 'react-icons/md';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,29 +22,63 @@ const Navbar = () => {
         setIsScrolled(false);
       }
 
-      // Aktif bölümü belirle
-      const sections = navLinks.map(link => link.href.substring(1));
-      
-      // İlk görünür bölümü bul
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 200 && rect.bottom >= 200;
+      // Eğer ana sayfadaysak (#id bölümleri için) aktif bölümü belirle
+      if (pathname === '/') {
+        const sections = navLinks
+          .filter(link => link.href.startsWith('#'))
+          .map(link => link.href.substring(1));
+        
+        // İlk görünür bölümü bul
+        const currentSection = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 200 && rect.bottom >= 200;
+          }
+          return false;
+        });
+        
+        if (currentSection) {
+          setActiveSection('#' + currentSection);
+        } else if (window.scrollY < 100) {
+          setActiveSection(''); // En üstte olduğumuzda hiçbir bölüm seçili değil
         }
-        return false;
-      });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
-      } else if (window.scrollY < 100) {
-        setActiveSection(''); // En üstte olduğumuzda hiçbir bölüm seçili değil
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
+
+  // Sayfa yüklendiğinde veya path değiştiğinde aktif bölümü ayarla
+  useEffect(() => {
+    // Tam sayfa url'leri için (/#about değil, /projects gibi)
+    if (pathname !== '/') {
+      setActiveSection(pathname);
+    } else {
+      // Ana sayfada olduğumuzda ve scroll konumuna göre aktif bölümü belirle
+      const handleInitialScroll = () => {
+        const sections = navLinks
+          .filter(link => link.href.startsWith('#'))
+          .map(link => link.href.substring(1));
+        
+        const currentSection = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 200 && rect.bottom >= 200;
+          }
+          return false;
+        });
+        
+        if (currentSection) {
+          setActiveSection('#' + currentSection);
+        }
+      };
+      
+      handleInitialScroll();
+    }
+  }, [pathname]);
 
   return (
     <header
@@ -53,7 +89,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <motion.a
-          href="#"
+          href="/"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -72,7 +108,7 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link, index) => {
-            const isActive = activeSection === link.href.substring(1);
+            const isActive = activeSection === link.href;
             return (
               <motion.a
                 key={link.href}
@@ -177,7 +213,7 @@ const Navbar = () => {
         >
           <div className="container mx-auto py-4 px-4 flex flex-col space-y-4">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
+              const isActive = activeSection === link.href;
               return (
                 <a
                   key={link.href}
