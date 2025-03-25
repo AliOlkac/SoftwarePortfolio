@@ -82,4 +82,64 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary;
+}
+
+/* Proje Kartları için 3D Flip Efekti */
+.flip-card {
+  perspective: 900px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1500ms;
+  transform-style: preserve-3d;
+  border-radius: 1rem;
+}
+
+.flip-card:hover .flip-card-inner {
+  cursor: pointer;
+  transform: rotateY(180deg) rotateZ(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg) rotateZ(180deg);
+}
+
+/* Neon Border Glow Effect */
+.glow-border {
+  box-shadow: 0 0 10px rgba(0, 255, 179, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.hover\:shadow-neon-green:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.8);
+}
+
+/* Glass Effect */
+.glass-effect {
+  background: rgba(15, 15, 18, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neon Text */
+.neon-text {
+  text-shadow: 0 0 10px rgba(0, 255, 179, 0.7), 0 0 20px rgba(0, 255, 179, 0.5);
+  color: rgba(0, 255, 179, 1);
 } 
