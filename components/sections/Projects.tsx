@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import ProjectModal from '../ProjectModal';
 
 // Proje tipi tanımlaması
@@ -149,8 +148,7 @@ const Projects = () => {
         >
           <h2 className="text-4xl font-bold mb-4 neon-text">Projelerim</h2>
           <p className="text-white/80 max-w-2xl mx-auto">
-            Geliştirdiğim çeşitli projeler ile yazılım dünyasındaki deneyimlerimi keşfedin.
-            Hover yaparak projelerin detaylarını görebilirsiniz.
+            Geliştirdiğim başlıca projeler ile yazılım dünyasındaki deneyimlerimi keşfedin.
           </p>
         </motion.div>
         
