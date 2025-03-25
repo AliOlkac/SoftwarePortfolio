@@ -22,28 +22,8 @@ const Navbar = () => {
         setIsScrolled(false);
       }
 
-      // Eğer ana sayfadaysak (#id bölümleri için) aktif bölümü belirle
-      if (pathname === '/') {
-        const sections = navLinks
-          .filter(link => link.href.startsWith('#'))
-          .map(link => link.href.substring(1));
-        
-        // İlk görünür bölümü bul
-        const currentSection = sections.find(section => {
-          const element = document.getElementById(section);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            return rect.top <= 200 && rect.bottom >= 200;
-          }
-          return false;
-        });
-        
-        if (currentSection) {
-          setActiveSection('#' + currentSection);
-        } else if (window.scrollY < 100) {
-          setActiveSection(''); // En üstte olduğumuzda hiçbir bölüm seçili değil
-        }
-      }
+      // Ana sayfada olduğumuzda bile scroll pozisyonunda aktif bölümü değiştirmiyoruz
+      // Aktif bölüm her zaman Ana Sayfa olarak kalıyor
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -52,31 +32,13 @@ const Navbar = () => {
 
   // Sayfa yüklendiğinde veya path değiştiğinde aktif bölümü ayarla
   useEffect(() => {
-    // Tam sayfa url'leri için (/#about değil, /projects gibi)
-    if (pathname !== '/') {
-      setActiveSection(pathname);
+    // Ana sayfa için özel durum
+    if (pathname === '/') {
+      // Ana sayfada olduğumuzda, Ana Sayfa linkini aktif yap
+      setActiveSection('/');
     } else {
-      // Ana sayfada olduğumuzda ve scroll konumuna göre aktif bölümü belirle
-      const handleInitialScroll = () => {
-        const sections = navLinks
-          .filter(link => link.href.startsWith('#'))
-          .map(link => link.href.substring(1));
-        
-        const currentSection = sections.find(section => {
-          const element = document.getElementById(section);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            return rect.top <= 200 && rect.bottom >= 200;
-          }
-          return false;
-        });
-        
-        if (currentSection) {
-          setActiveSection('#' + currentSection);
-        }
-      };
-      
-      handleInitialScroll();
+      // Diğer sayfalarda path'e göre aktif bölümü belirle
+      setActiveSection(pathname);
     }
   }, [pathname]);
 
