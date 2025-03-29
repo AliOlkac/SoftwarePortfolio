@@ -37,6 +37,7 @@ const config: Config = {
         'neon-purple': '0 0 5px #9d00ff, 0 0 20px #9d00ff',
         'neon-pink': '0 0 5px #ff00e5, 0 0 20px #ff00e5',
         'neon-green': '0 0 5px #00ff66, 0 0 20px #00ff66',
+        'neon-orange': '0 0 5px #ffa500, 0 0 20px #ffa500',
       },
       animation: {
         'glow': 'glow 2.5s ease-in-out infinite alternate',
