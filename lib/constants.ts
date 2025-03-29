@@ -23,7 +23,7 @@ export const siteConfig = {
 export const navLinks = [
   { title: 'Ana Sayfa', path: '/', name: 'Ana Sayfa', href: '/' },
   { title: 'Projeler & Sertifikalar', path: '/projects', name: 'Projeler & Sertifikalar', href: '/projects' },
-  { title: 'CV', path: '#cv', name: 'CV', href: '#cv' },
+  { title: 'CV', path: '/cv', name: 'CV', href: '/cv' },
   { title: 'İletişim', path: '#contact', name: 'İletişim', href: '#contact' },
 ]
 
