@@ -44,8 +44,8 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'glass-effect py-3' : 'py-5'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 glass-effect ${
+        isScrolled ? 'py-3 backdrop-blur-md' : 'py-5 backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -68,7 +68,7 @@ const Navbar = () => {
         </motion.a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-10">
           {navLinks.map((link, index) => {
             const isActive = activeSection === link.href;
             return (
@@ -78,8 +78,8 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative py-2 group ${
-                  isActive ? 'text-primary' : 'text-gray-300 hover:text-white'
+                className={`relative py-2 group text-[21px] font-medium ${
+                  isActive ? 'text-primary' : 'text-gray-100 hover:text-white'
                 }`}
               >
                 {link.name}
@@ -102,11 +102,11 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-gray-300 hover:text-primary hover:shadow-neon-blue transition-all p-2 rounded-full"
+            className="text-gray-100 hover:text-primary hover:shadow-neon-blue transition-all p-2 rounded-full"
             aria-label="GitHub"
             whileHover={{ scale: 1.1 }}
           >
-            <FiGithub size={20} />
+            <FiGithub size={22} />
           </motion.a>
           <motion.a
             href={siteConfig.links.linkedin}
@@ -115,22 +115,22 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-gray-300 hover:text-primary hover:shadow-neon-blue transition-all p-2 rounded-full"
+            className="text-gray-100 hover:text-primary hover:shadow-neon-blue transition-all p-2 rounded-full"
             aria-label="LinkedIn"
             whileHover={{ scale: 1.1 }}
           >
-            <FiLinkedin size={20} />
+            <FiLinkedin size={22} />
           </motion.a>
           <motion.a
             href={siteConfig.links.email}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-gray-300 hover:text-primary hover:shadow-neon-blue transition-all p-2 rounded-full"
+            className="text-gray-100 hover:text-primary hover:shadow-neon-blue transition-all p-2 rounded-full"
             aria-label="Email"
             whileHover={{ scale: 1.1 }}
           >
-            <MdEmail size={20} />
+            <MdEmail size={22} />
           </motion.a>
         </div>
 
@@ -138,7 +138,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`text-gray-300 hover:text-primary transition-colors p-2 rounded-full ${
+            className={`text-gray-100 hover:text-primary transition-colors p-2 rounded-full ${
               isMobileMenuOpen ? 'text-primary' : ''
             }`}
             aria-label={isMobileMenuOpen ? "Menüyü Kapat" : "Menüyü Aç"}
@@ -181,10 +181,10 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`py-2 px-4 border-l-2 ${
+                  className={`py-2 px-4 border-l-2 text-[16px] font-medium ${
                     isActive 
                       ? 'border-primary text-primary' 
-                      : 'border-transparent text-gray-300'
+                      : 'border-transparent text-gray-100'
                   }`}
                 >
                   {link.name}
@@ -196,26 +196,26 @@ const Navbar = () => {
                 href={siteConfig.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-primary transition-colors p-2"
+                className="text-gray-100 hover:text-primary transition-colors p-2"
                 aria-label="GitHub"
               >
-                <FiGithub size={20} />
+                <FiGithub size={22} />
               </a>
               <a
                 href={siteConfig.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-primary transition-colors p-2"
+                className="text-gray-100 hover:text-primary transition-colors p-2"
                 aria-label="LinkedIn"
               >
-                <FiLinkedin size={20} />
+                <FiLinkedin size={22} />
               </a>
               <a
                 href={siteConfig.links.email}
-                className="text-gray-300 hover:text-primary transition-colors p-2"
+                className="text-gray-100 hover:text-primary transition-colors p-2"
                 aria-label="Email"
               >
-                <MdEmail size={20} />
+                <MdEmail size={22} />
               </a>
             </div>
           </div>

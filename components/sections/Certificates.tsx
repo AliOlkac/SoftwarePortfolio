@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 // Sertifika tipi tanımlaması
 interface Certificate {
@@ -89,12 +89,12 @@ const CertificateCard: React.FC<{ certificate: Certificate }> = ({
     >
       <div className="relative w-full h-[65%] bg-black/40">
         <div className="absolute inset-0 flex items-center justify-center">
-          <Image
+          <OptimizedImage
             src={certificate.image}
             alt={certificate.title}
-            fill
-            style={{ objectFit: "contain" }}
-            className="z-0 brightness-[0.9] p-2 transition-all duration-300 group-hover:scale-105"
+            width={600}
+            height={400}
+            className="z-0 brightness-[0.9] p-2 transition-all duration-300 group-hover:scale-105 object-contain"
           />
         </div>
         

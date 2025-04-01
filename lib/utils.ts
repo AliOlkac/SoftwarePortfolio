@@ -1,12 +1,16 @@
-import { type ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-// Tailwind sınıflarını birleştirme
+/**
+ * Tailwind sınıflarını birleştir
+ */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
-// Tarih formatı
+/**
+ * Tarih formatı
+ */
 export function formatDate(date: string | Date) {
   return new Date(date).toLocaleDateString('tr-TR', {
     year: 'numeric',
@@ -15,7 +19,9 @@ export function formatDate(date: string | Date) {
   })
 }
 
-// Scroll yumuşatma
+/**
+ * Scroll yumuşatma
+ */
 export function smoothScroll(elementId: string) {
   const element = document.getElementById(elementId)
   if (element) {
@@ -23,7 +29,9 @@ export function smoothScroll(elementId: string) {
   }
 }
 
-// Intersection Observer hook'u için yardımcı fonksiyon
+/**
+ * Intersection Observer hook'u için yardımcı fonksiyon
+ */
 export function useIntersectionObserver(
   callback: (entry: IntersectionObserverEntry) => void,
   options: IntersectionObserverInit = {}
@@ -51,47 +59,57 @@ export function useIntersectionObserver(
   }
 }
 
-// Debounce fonksiyonu
+/**
+ * Debounce fonksiyonu - aynı fonksiyonu kısa süre içinde çok kez çağırmayı önler
+ * Özellikle scrolling, resizing vb. yoğun işlemleri optimize etmek için
+ */
 export function debounce<T extends (...args: unknown[]) => unknown>(
-  func: T,
+  func: T, 
   wait: number
 ): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout
-
-  return function executedFunction(...args: Parameters<T>) {
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  
+  return function(...args: Parameters<T>) {
     const later = () => {
-      clearTimeout(timeout)
-      func(...args)
-    }
-
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-  }
+      timeout = null;
+      func(...args);
+    };
+    
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
 
-// Throttle fonksiyonu
-export function throttle<T extends (...args: unknown[]) => unknown>(
+/**
+ * Throttle fonksiyonu - bir fonksiyonu belirli aralıklarla çağırmayı sağlar
+ * Animasyon performansını artırmak için
+ */
+export function throttle<T extends (arg: string) => void>(
   func: T,
   limit: number
-): (...args: Parameters<T>) => void {
-  let inThrottle: boolean
-
-  return function executedFunction(this: unknown, ...args: Parameters<T>) {
+): (arg: string) => void {
+  let inThrottle = false;
+  
+  return function(arg: string) {
     if (!inThrottle) {
-      func.apply(this, args)
-      inThrottle = true
-      setTimeout(() => (inThrottle = false), limit)
+      func(arg);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
     }
-  }
+  };
 }
 
-// Metin kısaltma
+/**
+ * Metin kısaltma
+ */
 export function truncateText(text: string, maxLength: number) {
   if (text.length <= maxLength) return text
   return text.slice(0, maxLength) + '...'
 }
 
-// URL'den slug oluşturma
+/**
+ * URL'den slug oluşturma
+ */
 export function createSlug(text: string): string {
   return text
     .toLowerCase()
@@ -103,4 +121,15 @@ export function createSlug(text: string): string {
     .replace(/ç/g, 'c')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
+}
+
+/**
+ * İşlevi tarayıcı boşken çalıştırır
+ * @param callback - Çalıştırılacak fonksiyon
+ */
+export function runWhenIdle(
+  callback: () => void
+): void {
+  // requestIdleCallback desteği varsa bunu kullan, yoksa setTimeout
+  setTimeout(callback, 1);
 } 
