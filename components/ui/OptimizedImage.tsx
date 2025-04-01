@@ -1,87 +1,75 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { LazyComponent } from './LazyComponent';
+import { useInView } from 'react-intersection-observer';
 
 interface OptimizedImageProps {
   src: string;
   alt: string;
-  width?: number;
-  height?: number;
-  priority?: boolean;
+  width: number;
+  height: number;
   className?: string;
-  fill?: boolean;
-  sizes?: string;
-  quality?: number;
+  priority?: boolean;
+  onClick?: () => void;
 }
 
 /**
- * Performans odaklı resim bileşeni
- * - Görünür olduğunda yüklenir (LazyComponent ile)
- * - Yükleme durumunda düşük kalite bulanık görüntü gösterir
- * - Mobil cihazlarda daha düşük çözünürlük kullanır
+ * Görüntüleri optimize eden ve lazy yükleme yapan özel bir Image komponenti
  */
-export default function OptimizedImage({
+const OptimizedImage = ({
   src,
   alt,
   width,
   height,
-  priority = false,
   className = '',
-  fill = false,
-  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
-  quality = 75
-}: OptimizedImageProps) {
-  const [loaded, setLoaded] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+  priority = false,
+  onClick,
+  ...props
+}: OptimizedImageProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Intersection Observer kullanarak viewport'a girdiğinde yükleme
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Sadece bir kez tetikle
+    threshold: 0.1, // Görüntünün %10'u göründüğünde tetikle
+  });
 
-  // Sadece client tarafında çalıştır
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  // Yükleme tamamlandığında
+  const handleLoad = () => {
+    setIsLoaded(true);
+  };
 
-  // Mobil cihazlarda daha düşük kalite kullan
-  const deviceQuality = isClient && window.innerWidth < 768 ? Math.min(quality, 65) : quality;
-
-  // İçerik oluşturma
-  const imageContent = (
-    <div 
-      className={`relative overflow-hidden ${className}`} 
-      style={fill ? { width: '100%', height: '100%' } : { width, height }}
+  return (
+    <div
+      ref={ref}
+      className={`relative ${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
+      onClick={onClick}
     >
-      <Image
-        src={src}
-        alt={alt}
-        width={fill ? undefined : width}
-        height={fill ? undefined : height}
-        quality={deviceQuality}
-        fill={fill}
-        sizes={sizes}
-        priority={priority}
-        loading={priority ? 'eager' : 'lazy'}
-        onLoad={() => setLoaded(true)}
-        className={`transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-      />
-      
-      {/* Yükleme durumu için bulanık fon */}
-      {!loaded && (
-        <div 
-          className="absolute inset-0 bg-background/40 backdrop-blur-sm animate-pulse"
-          aria-hidden="true"
+      {/* Görüntü viewport'a girdiğinde veya priority=true ise yükle */}
+      {(inView || priority) && (
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          quality={70} // Daha düşük kalite, daha küçük dosya boyutu
+          onLoad={handleLoad}
+          loading={priority ? 'eager' : 'lazy'}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAEtAJBBfL6PAAAAABJRU5ErkJggg=="
+          {...props}
         />
+      )}
+      
+      {/* Yükleme animasyonu */}
+      {!isLoaded && (inView || priority) && (
+        <div className="absolute inset-0 bg-background/50 flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+        </div>
       )}
     </div>
   );
+};
 
-  // Eğer öncelikli değilse LazyComponent ile sar
-  return priority ? imageContent : (
-    <LazyComponent 
-      threshold={0.1}
-      rootMargin="200px"
-      placeholder={<div className={`${className} bg-background/20 animate-pulse`} style={fill ? { width: '100%', height: '100%' } : { width, height }} />}
-    >
-      {imageContent}
-    </LazyComponent>
-  );
-} 
+export default OptimizedImage; 

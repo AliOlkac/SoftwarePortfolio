@@ -2,116 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Performans optimizasyonu: Ana değişkenler */
-:root {
-  --foreground-rgb: 212, 212, 216;
-  --background-start-rgb: 13, 14, 18;
-  --background-end-rgb: 9, 9, 11;
+@layer base {
+  :root {
+    --foreground-rgb: 212, 212, 216;
+    --background-start-rgb: 13, 14, 18;
+    --background-end-rgb: 9, 9, 11;
+    
+    /* Ana renkler */
+    --primary: 0, 179, 255;
+    --primary-dark: 0, 114, 163;
+    --secondary: 162, 28, 175;
+    --secondary-dark: 78, 13, 85;
+    --text: 212, 212, 216;
+    --text-secondary: 161, 161, 170;
+    --background: 13, 14, 18;
+    --orange: 255, 102, 0;
+  }
+
+  body {
+    @apply bg-background text-text;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    color: rgb(var(--text));
+    background: radial-gradient(
+      ellipse at bottom,
+      rgb(var(--background-start-rgb)) 0%,
+      rgb(var(--background-end-rgb)) 100%
+    );
+  }
   
-  /* Ana renkler */
-  --primary: 0, 179, 255;
-  --primary-dark: 0, 114, 163;
-  --secondary: 162, 28, 175;
-  --secondary-dark: 78, 13, 85;
-  --text: 212, 212, 216;
-  --text-secondary: 161, 161, 170;
-  --background: 13, 14, 18;
-  --orange: 255, 102, 0;
+  /* Mobil görünüm için text boyutu ayarlamaları */
+  @media (max-width: 640px) {
+    h1 {
+      @apply text-3xl;
+    }
+    h2 {
+      @apply text-xl;
+    }
+    p {
+      @apply text-sm leading-relaxed;
+    }
+  }
 }
 
-body {
-  color: rgb(var(--text));
-  background: radial-gradient(
-    ellipse at bottom,
-    rgb(var(--background-start-rgb)) 0%,
-    rgb(var(--background-end-rgb)) 100%
-  );
-  /* Yumuşak yazı tipi oluşturma */
-  text-rendering: optimizeSpeed;
-  /* Daha hızlı tıklanabilir öğeler için */
-  touch-action: manipulation;
-  /* Animasyonları sadece opasite ve dönüşüm için GPU hızlandırması kullan */
-  font-feature-settings: "kern" 1, "liga" 1;
-  will-change: auto;
-  overflow-x: hidden;
-}
-
-/* Tailwind Bileşen Stilleri - bu sınıflar daha optimize */
 @layer components {
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .section {
-    @apply py-12 sm:py-20;
+    @apply py-16 sm:py-24;
   }
 
   .heading-1 {
-    @apply text-3xl sm:text-5xl font-bold;
+    @apply text-4xl sm:text-5xl lg:text-6xl font-display font-bold;
   }
 
   .heading-2 {
-    @apply text-2xl sm:text-4xl font-bold;
+    @apply text-3xl sm:text-4xl font-display font-bold;
   }
 
   .heading-3 {
-    @apply text-xl sm:text-3xl font-bold;
+    @apply text-2xl sm:text-3xl font-display font-bold;
   }
 
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
-    will-change: transform;
+  }
+
+  .neon-border {
+    @apply border border-primary shadow-neon-blue;
   }
 
   .neon-text {
-    @apply text-primary;
-    text-shadow: 0 0 8px rgba(0, 179, 255, 0.6);
-    will-change: transform;
+    @apply text-primary animate-glow;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-background/30 border border-white/10;
   }
 
   .neon-button {
-    @apply relative bg-transparent border border-primary text-primary overflow-hidden transition-all duration-300 hover:text-background hover:bg-primary;
-  }
-  
-  .shadow-neon-blue {
-    box-shadow: 0 0 15px rgba(0, 179, 255, 0.6);
-    will-change: transform;
-  }
-  
-  /* Glass Effect - Cam efekti */
-  .glass-effect {
-    background: rgba(13, 14, 18, 0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    @apply relative bg-transparent border border-primary text-primary overflow-hidden transition-all duration-300 hover:shadow-neon-blue hover:text-background hover:bg-primary;
   }
 }
 
-/* Sadece gerekli olduğunda kaydırma davranışını düzelt */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar - Daha basit ve performanslı */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(var(--background-start-rgb));
+  @apply bg-background;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 179, 255, 0.3);
-  border-radius: 9999px;
+  @apply bg-primary/50 rounded-full;
 }
 
-/* Performans için basitleştirilmiş sınıflar */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
+
+/* Card Hover Effects */
 .card-hover {
-  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.3s ease;
   will-change: transform;
   transform: translateZ(0);
 }
@@ -120,17 +119,154 @@ body {
   transform: translateY(-5px) translateZ(0);
 }
 
-/* GPU destekli neon efektleri */
-.text-orange {
-  color: rgb(255, 102, 0);
-  text-shadow: 0 0 8px rgba(255, 102, 0, 0.6);
-  will-change: transform;
+/* Neon Border Glow Effect */
+.glow-border {
+  box-shadow: 0 0 15px rgba(0, 255, 179, 0.7);
+  border-width: 3px !important;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
+.hover\:shadow-neon-blue:hover {
+  box-shadow: 0 0 15px rgba(0, 179, 255, 0.8);
+}
+
+.hover\:shadow-neon-green:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.8);
+}
+
+.hover\:shadow-neon-purple:hover {
+  box-shadow: 0 0 15px rgba(157, 0, 255, 0.8);
+}
+
+/* Glass Effect */
+.glass-effect {
+  background: rgba(15, 15, 18, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neon Text */
+.neon-text {
+  text-shadow: 0 0 8px rgba(0, 255, 179, 0.6);
+  color: rgba(0, 255, 179, 1);
+  will-change: opacity;
+  transition: opacity 0.3s ease;
+}
+
+/* Sertifika Kartı Özel Efekti */
+.certificate-card {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.certificate-card::before,
+.certificate-card::after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  background-color: rgba(0, 255, 102, 0.2);
+  z-index: 5;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.certificate-card::before {
+  top: 0;
+  right: 0;
+  border-radius: 0 15px 0 100%;
+}
+
+.certificate-card::after {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100% 0 15px;
+}
+
+.certificate-card:hover::before,
+.certificate-card:hover::after {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.certificate-card:hover .pdf-download-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pdf indirme butonu */
+.pdf-download-button {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+/* Turuncu Neon Efektleri */
+.text-orange {
+  color: #ffa500;
+  text-shadow: 0 0 8px rgba(255, 165, 0, 0.6);
+  will-change: opacity;
+}
+
+.border-orange-glow {
+  box-shadow: 0 0 15px rgba(255, 165, 0, 0.7);
+  border-color: rgba(255, 165, 0, 0.8) !important;
+  border-width: 3px;
+}
+
+.shadow-orange-neon {
+  box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
+}
+
+@keyframes orangePulse {
+  0% {
+    text-shadow: 0 0 8px rgba(255, 165, 0, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(255, 165, 0, 0.5);
+  }
+}
+
+.orange-pulse {
+  /* animation: orangePulse 2s infinite; */
+}
+
+/* Mavi Neon Efektleri */
 .text-blue-neon {
-  color: rgb(0, 179, 255);
+  color: #00b3ff;
   text-shadow: 0 0 8px rgba(0, 179, 255, 0.6);
-  will-change: transform;
+  will-change: opacity;
+}
+
+.border-blue-glow {
+  box-shadow: 0 0 10px rgba(0, 179, 255, 0.6);
+  border-color: rgba(0, 179, 255, 0.8) !important;
+  border-width: 2px;
+}
+
+.shadow-blue-neon {
+  box-shadow: 0 0 10px rgba(0, 179, 255, 0.6);
+}
+
+/* Daha basit animasyon */
+@keyframes bluePulse {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(0, 179, 255, 0.5);
+  }
+}
+
+.blue-pulse {
+  /* animation: bluePulse 2s infinite; */
+}
+
+.hover-blue-glow:hover {
+  color: #00b3ff;
+  text-shadow: 0 0 8px rgba(0, 179, 255, 0.6);
+  transition: all 0.3s ease;
 }
 
 /* Yıldız animasyonu CSS kodları kaldırıldı */

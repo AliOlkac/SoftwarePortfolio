@@ -4,5 +4,13 @@
     // Performans optimizasyonları için bazı kuralları devre dışı bırakma
     "@typescript-eslint/no-explicit-any": "off",
     "react/no-unknown-property": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["next.config.js", "*.config.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
 } 

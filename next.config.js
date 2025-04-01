@@ -9,10 +9,42 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 7, // 1 hafta önbellek
   },
 
-  // CSS optimizasyonu için
+  // CSS ve Turbopack optimizasyonları
   experimental: {
     // CSS optimizasyonu
     optimizeCss: true,
+    
+    // Turbopack yapılandırması
+    turbo: {
+      // Module ID stratejisi - üretimde tutarlı modül ID'leri için
+      moduleIdStrategy: 'deterministic',
+      
+      // Uzantı çözümlemeleri
+      resolveExtensions: [
+        '.tsx', 
+        '.ts', 
+        '.jsx', 
+        '.js', 
+        '.mjs', 
+        '.json',
+        '.css',
+        '.scss',
+        '.sass'
+      ],
+    },
+    
+    // Paket optimizasyonları - sadece kullandığınız modülleri yükler
+    optimizePackageImports: [
+      // Kullandığınız büyük kütüphaneleri buraya ekleyin
+      // Örneğin: '@mui/material', '@mui/icons-material', 'lodash-es' vb.
+    ],
+    
+    // Daha hızlı bağımlılık izleme için turbotrace
+    turbotrace: {
+      logLevel: 'error',
+      logDetail: false,
+      memoryLimit: 6000, // MB cinsinden maksimum bellek kullanımı
+    },
   },
 
   // Script optimizasyonları
@@ -53,8 +85,10 @@ const nextConfig = {
 }
 
 // Bundle analyzer için tek satırlık çözüm
+import bundleAnalyzer from '@next/bundle-analyzer';
+
 const withBundleAnalyzer = process.env.ANALYZE === 'true'
-  ? require('@next/bundle-analyzer')({})
+  ? bundleAnalyzer({})
   : (config) => config;
 
-module.exports = withBundleAnalyzer(nextConfig); 
+export default withBundleAnalyzer(nextConfig); 
