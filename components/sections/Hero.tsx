@@ -22,7 +22,7 @@ const scrollToSection = (id: string) => {
 
 // Throttled scroll fonksiyonu
 const throttledScroll = throttle(scrollToSection, 300);
-
+ 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
