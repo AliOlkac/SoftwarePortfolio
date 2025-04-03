@@ -1,28 +1,7 @@
 "use client";
 
-import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
-import { throttle } from "@/lib/utils";
 
-// Performans için scroll fonksiyonu
-const scrollToSection = (id: string) => {
-  const element = document.getElementById(id);
-  if (element) {
-    requestAnimationFrame(() => {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-      
-      window.scrollTo({
-        top: y,
-        behavior: "smooth"
-      });
-    });
-  }
-};
-
-// Throttled scroll fonksiyonu
-const throttledScroll = throttle(scrollToSection, 300);
- 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -42,24 +21,6 @@ const Hero = () => {
               odaklanıyorum —{" "}
               <span className="text-orange">Ninja disipliniyle</span>
             </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 w-full sm:w-auto justify-center">
-            <Button
-              size="lg"
-              onClick={() => throttledScroll("projects")}
-              className="neon-button w-full sm:w-auto"
-            >
-              Projelerimi Gör
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => throttledScroll("contact")}
-              className="neon-button w-full sm:w-auto border-secondary text-secondary hover:bg-secondary hover:shadow-neon-purple"
-            >
-              İletişime Geç
-            </Button>
           </div>
         </div>
       </Container>
