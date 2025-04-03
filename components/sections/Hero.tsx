@@ -22,6 +22,8 @@ const Hero = () => {
               <span className="text-orange">Ninja disipliniyle</span>
             </p>
           </div>
+
+         
         </div>
       </Container>
 
