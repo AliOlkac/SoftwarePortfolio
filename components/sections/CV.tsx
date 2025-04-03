@@ -8,9 +8,9 @@ import { FaDownload, FaEye } from 'react-icons/fa';
 
 const CV = () => {
   // CV PDF'inin yolu
-  const cvPdfPath = '/cv/AliOlkac_CV.pdf';
+  const cvPdfPath = `/cv/AliOlkac_CV.pdf?v=${new Date().getTime()}`;
   // CV görsel önizleme resimlerinin yolları (birden fazla sayfa için)
-  const cvPreviewImages = ['/cv/cv-preview.png'];
+  const cvPreviewImages = [`/cv/cv-preview.png?v=${new Date().getTime()}`];
 
   return (
     <section id="cv" className="py-20">
@@ -204,13 +204,13 @@ const CV = () => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
-                <Link
+                <a
                   href={cvPdfPath}
                   download="AliOlkac_CV.pdf"
                   className="mt-8 w-full py-3 px-6 flex items-center justify-center bg-orange/20 hover:bg-orange/30 text-orange border border-orange/60 rounded-lg transition-all duration-300 shadow-orange-neon hover:shadow-[0_0_20px_rgba(255,165,0,0.9)] group"
                 >
                   <FaDownload className="mr-2 group-hover:animate-bounce" /> CV&apos;yi İndir (PDF)
-                </Link>
+                </a>
               </motion.div>
             </div>
           </motion.div>
