@@ -15,7 +15,7 @@ import Container from '@/components/ui/Container';
 import Card from '@/components/ui/Card';
 import GitHubContribution from '@/components/GitHubContribution';
 
-// Dinamik olarak icon alıp görüntüleyen yardımcı fonksiyon
+// Helper function that dynamically gets and displays an icon
 const DynamicIcon = ({ iconName, color }: { iconName: string; color: string }) => {
   const IconComponent = iconName.startsWith('Fa') 
     ? FaIcons[iconName as keyof typeof FaIcons] 
@@ -43,7 +43,7 @@ const DynamicIcon = ({ iconName, color }: { iconName: string; color: string }) =
   return IconComponent ? <IconComponent className={className} /> : null;
 };
 
-// Teknoloji kartı bileşeni
+// Technology card component
 const TechItem = ({ name, iconName, color }: { name: string; iconName: string; color: string }) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.8 }}
@@ -64,80 +64,80 @@ const TechItem = ({ name, iconName, color }: { name: string; iconName: string; c
   </motion.div>
 );
 
-// Eğitim verileri
+// Education data
 const educationData = [
   {
     period: "2021 - 2025",
-    title: "Bilgisayar Mühendisliği Lisans",
-    institution: "Balıkesir Üniversitesi",
-    description: "Bilgisayar mühendisliği bölümünde lisans eğitimi"
+    title: "Computer Engineering",
+    institution: "Balikesir University",
+    description: "Bachelor's degree in Computer Engineering"
   },
   {
     period: "2017 - 2021",
-    title: "Lise Eğitimi",
-    institution: "Simav Fen Lisesi",
-    description: "Fen lisesinde Lise eğitimimi tamamladım."
+    title: "High School Education",
+    institution: "Simav Science High School",
+    description: "Completed high school education at a Science High School."
   },
 ];
 
-// Deneyim verileri
+// Experience data
 const experienceData = [
   {
-    title: "Yazılım Geliştirme",
-    description: "Web (HTML, CSS, JavaScript, Next.js), Mobil (React Native), Oyun (Unity), Makine Öğrenimi",
+    title: "Software Development",
+    description: "Web (HTML, CSS, JavaScript, Next.js), Mobile (React Native), Game (Unity), Machine Learning",
     icon: <FaLaptopCode className="text-primary text-xl" />,
     color: "primary"
   },
   {
-    title: "E-Ticaret & Girişimcilik",
-    description: "Amazon'da E-ticaret (2.5 yıl), 3D yazıcı ile üretim, Tekstil ürünleri satışı",
+    title: "E-Commerce & Entrepreneurship",
+    description: "E-commerce on Amazon (2.5 years), 3D printer manufacturing, Textile product sales",
     icon: <FaIcons.FaStore className="text-secondary text-xl" />,
     color: "secondary"
   },
   {
-    title: "Finans & Teknoloji",
-    description: "Algoritmik Trading (1+ yıl), Kripto piyasasında otomatik ticaret sistemleri",
+    title: "Finance & Technology",
+    description: "Algorithmic Trading (1+ year), Automated trading systems in crypto markets",
     icon: <FaIcons.FaChartLine className="text-accent text-xl" />,
     color: "accent"
   },
   {
-    title: "Staj Deneyimleri",
-    description: "2KEKGAMES (2023) - Algoritmik trading stajı, ELI (2022) - Web tasarımı stajı",
+    title: "Internship Experiences",
+    description: "2KEKGAMES (2023) - Algorithmic trading internship, ELI (2022) - Web design internship",
     icon: <FaBriefcase className="text-highlight text-xl" />,
     color: "highlight"
   }
 ];
 
-// İlgi Alanları
+// Areas of Interest
 const interestsData = [
-  "Yapay Zeka ve Makine Öğrenimi",
-  "Web ve Mobil Uygulama Geliştirme",
-  "Oyun Geliştirme",
-  "Algoritmik Trading",
-  "Girişimcilik",
-  "LLM Modelleri ve AI Ajanlar"
+  "Artificial Intelligence and Machine Learning",
+  "Web and Mobile Application Development",
+  "Game Development",
+  "Algorithmic Trading",
+  "Entrepreneurship",
+  "LLM Models and AI Agents"
 ];
 
-// Beceri kategorileri
+// Skill categories
 const skillCategories = [
   {
-    title: "Web Teknolojileri",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML/CSS","Spline"]
+    title: "Web Technologies",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML/CSS","Spline","GSAP"]
   },
   {
-    title: "Programlama Dilleri",
+    title: "Programming Languages",
     skills: ["JavaScript", "Python", "C#"]
   },
   {
-    title: "Veri & AI",
-    skills: ["TensorFlow", "scikit-learn","Numpy", "Pandas", "Veri Analizi"]
+    title: "Data & AI",
+    skills: ["TensorFlow", "scikit-learn","Numpy", "Pandas", "Data Analysis"]
   },
   {
-    title: "Mobil & Oyun",
+    title: "Mobile & Game",
     skills: ["React Native", "Unity"]
   },
   {
-    title: "DevOps & Veritabanı",
+    title: "DevOps & Database",
     skills: ["Git", "MongoDB", "MariaDB", "MySQL"]
   }
 ];
@@ -146,7 +146,7 @@ const About = () => {
   return (
     <section id="about" className="section py-20">
       <Container>
-        {/* Başlık */}
+        {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -156,17 +156,17 @@ const About = () => {
         >
           <h2 className="heading-2 mb-4">
             <span className="text-gradient">
-              Hakkımda
+              About Me
             </span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Full-stack geliştirici olarak modern teknolojileri kullanarak etkili ve yenilikçi çözümler üretiyorum. Ninja yazılımcı olmak yolunda hızla ilerliyorum.
+            I&apos;m a full-stack developer who creates effective and innovative solutions using modern technologies. I&apos;m quickly advancing towards becoming a ninja developer.
           </p>
         </motion.div>
 
-        {/* Kişisel Bilgiler ve Eğitim */}
+        {/* Personal Information and Education */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          {/* Sol Bölüm - Kişisel Bilgiler */}
+          {/* Left Column - Personal Information */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -183,26 +183,26 @@ const About = () => {
                   <FaUserAlt className="text-primary text-xl" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-3 text-primary">Kişisel Bilgiler</h3>
+                  <h3 className="text-xl font-bold mb-3 text-primary">Personal Information</h3>
                   <p className="text-gray-300 mb-4">
-                    Merhaba! Ben Ali Olkaç. Yazılım dünyasında full-stack ninja geliştirici olma yolunda hızla ilerliyorum. Modern web teknolojileri, yapay zeka ve finans teknolojileri alanlarında uzmanlaşıyorum. Karmaşık problemlere yaratıcı çözümler üretmeyi ve her projede en son teknolojileri kullanarak yenilikçi uygulamalar geliştirmeyi seviyorum. Bilgisayar mühendisliği eğitimimi tamamlamak üzereyim ve şimdiden sektörde çeşitli deneyimler kazandım.
+                    Hello! I&apos;m Ali Olkaç. I&apos;m quickly advancing towards becoming a full-stack ninja developer. I specialize in modern web technologies, artificial intelligence, and finance technologies. I enjoy creating creative solutions to complex problems and developing innovative applications using the latest technologies. I&apos;m completing my computer engineering degree and have already gained various experiences in the industry.
                   </p>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-gray-400 text-sm">Ad</p>
+                      <p className="text-gray-400 text-sm">Name</p>
                       <p className="font-medium text-white">Ali Olkaç</p>
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">Yaş</p>
+                      <p className="text-gray-400 text-sm">Age</p>
                       <p className="font-medium text-white">22</p>
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">İlgi Alanları</p>
-                      <p className="font-medium text-white">Web Geliştirme, AI, Finans</p>
+                      <p className="text-gray-400 text-sm">Interests</p>
+                      <p className="font-medium text-white">Web Development, AI, Finance</p>
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">Konum</p>
-                      <p className="font-medium text-white">Kütahya, Türkiye</p>
+                      <p className="text-gray-400 text-sm">Location</p>
+                      <p className="font-medium text-white">Kütahya, Turkey</p>
                     </div>
                   </div>
                   
@@ -211,7 +211,7 @@ const About = () => {
             </Card>
           </motion.div>
 
-          {/* Sağ Bölüm - Eğitim */}
+          {/* Right Column - Education */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -228,7 +228,7 @@ const About = () => {
                   <FaGraduationCap className="text-secondary text-xl" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-3 text-secondary">Eğitim</h3>
+                  <h3 className="text-xl font-bold mb-3 text-secondary">Education</h3>
                   <div className="space-y-4">
                     {educationData.map((item, index) => (
                       <div key={index} className="border-l-2 border-secondary/50 pl-4 py-1">
@@ -245,9 +245,9 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Deneyim ve İlgi Alanları */}
+        {/* Experience and Interests */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          {/* Deneyim */}
+          {/* Experience */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -264,7 +264,7 @@ const About = () => {
                   <FaBriefcase className="text-accent text-xl" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-accent">Deneyim</h3>
+                  <h3 className="text-xl font-bold mb-4 text-accent">Experience</h3>
                   <div className="space-y-6">
                     {experienceData.map((exp, index) => (
                       <motion.div 
@@ -287,7 +287,7 @@ const About = () => {
             </Card>
           </motion.div>
 
-          {/* İlgi Alanları */}
+          {/* Interests */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -304,7 +304,7 @@ const About = () => {
                   <FaFlask className="text-primary text-xl" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-3 text-primary">İlgi Alanları</h3>
+                  <h3 className="text-xl font-bold mb-3 text-primary">Interests</h3>
                   <ul className="space-y-3">
                     {interestsData.map((interest, index) => (
                       <motion.li 
@@ -323,7 +323,7 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Yapay Zeka Açıklaması */}
+        {/* Artificial Intelligence Explanation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -341,13 +341,13 @@ const About = () => {
                 <FaBrain className="text-secondary text-xl" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-3 text-secondary">Yapay Zeka ve İleri Teknolojiler</h3>
+                <h3 className="text-xl font-bold mb-3 text-secondary">Artificial Intelligence and Advanced Technologies</h3>
                 <p className="text-gray-300">
-                  Son zamanlarda yapay zeka alanında, özellikle LLM (Large Language Model) modelleri ve AI ajanlar üzerine yoğun araştırmalar yapıyorum. Bu teknolojilerin yazılım geliştirme süreçlerini nasıl dönüştürdüğünü inceliyor ve kendi projelerimde aktif olarak kullanıyorum.
+                  In recent years, I&apos;ve been focusing on artificial intelligence, particularly LLM (Large Language Model) models and AI agents. I&apos;m researching how these technologies have transformed software development processes and actively using them in my projects.
                 </p>
                 <div className="mt-4 p-4 border border-secondary/20 rounded-lg bg-background/50 transition-all duration-300 hover:border-secondary/40 hover:bg-background/70">
                   <p className="text-gray-300 italic text-sm">
-                    &ldquo;Günümüzde teknoloji hızla evrim geçiriyor. LLM modelleri ve AI ajanların gelişimiyle, yazılım geliştirme süreci artık kod yazmaktan ziyade, doğru soruları sormaya ve projeyi etkin bir şekilde yönetmeye dönüşüyor. Bu yeni dönemde, teknik bilginin yanı sıra, yapay zeka araçlarını etkili kullanabilme becerisi çok daha değerli hale geliyor.&rdquo;
+                    &ldquo;Technology is evolving rapidly. The development of LLM models and AI agents has transformed software development processes from coding to asking the right questions and managing projects effectively. In this new era, technical knowledge is becoming more valuable, but the ability to effectively use AI tools is even more valuable.&rdquo;
                   </p>
                 </div>
               </div>
@@ -355,7 +355,7 @@ const About = () => {
           </Card>
         </motion.div>
 
-        {/* Yetenekler & Teknolojiler */}
+        {/* Skills & Technologies */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -369,14 +369,14 @@ const About = () => {
                 <FaLaptopCode className="text-accent text-xl" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-accent">Yetenekler & Teknolojiler</h3>
+                <h3 className="text-xl font-bold text-accent">Skills & Technologies</h3>
                 <p className="text-gray-300">
-                  Projelerimde kullandığım teknolojiler ve uzmanlaştığım alanlar
+                  Technologies and areas I specialize in
                 </p>
               </div>
             </div>
 
-            {/* Beceri Kategorileri */}
+            {/* Skill Categories */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-12">
               {skillCategories.map((category, index) => (
                 <motion.div
@@ -405,33 +405,34 @@ const About = () => {
 
             {/* Tech Stack Icons Grid */}
             <div className="pt-4">
-              <h4 className="text-lg font-semibold mb-6 text-white text-center pb-2 border-b border-accent/20">Kullandığım Teknolojiler</h4>
+              <h4 className="text-lg font-semibold mb-6 text-white text-center pb-2 border-b border-accent/20">Technologies I&apos;ve Used</h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                {/* Web Teknolojileri */}
+                {/* Web Technologies */}
                 <TechItem name="React" iconName="FaReact" color="primary" />
                 <TechItem name="Next.js" iconName="SiNextdotjs" color="white" />
                 <TechItem name="TypeScript" iconName="SiTypescript" color="primary" />
                 <TechItem name="Tailwind CSS" iconName="SiTailwindcss" color="secondary" />
                 <TechItem name="HTML/CSS" iconName="FaHtml5" color="primary" />
-                <TechItem name="Spline" iconName="Si3Js" color="highlight" />
+                <TechItem name="Spline" iconName="SiSpline" color="highlight" />
+                <TechItem name="GSAP" iconName="SiGreensock" color="highlight" />
                 
-                {/* Programlama Dilleri */}
+                {/* Programming Languages */}
                 <TechItem name="JavaScript" iconName="SiJavascript" color="highlight" />
                 <TechItem name="Python" iconName="FaPython" color="secondary" />
                 <TechItem name="C#" iconName="SiCsharp" color="accent" />
                 
-                {/* Veri & AI */}
+                {/* Data & AI */}
                 <TechItem name="TensorFlow" iconName="SiTensorflow" color="primary" />
                 <TechItem name="scikit-learn" iconName="SiScikitlearn" color="accent" />
                 <TechItem name="Numpy" iconName="SiNumpy" color="secondary" />
                 <TechItem name="Pandas" iconName="SiPandas" color="primary" />
-                <TechItem name="Veri Analizi" iconName="FaChartBar" color="highlight" />
+                <TechItem name="Data Analysis" iconName="FaChartBar" color="highlight" />
                 
-                {/* Mobil & Oyun */}
+                {/* Mobile & Game */}
                 <TechItem name="React Native" iconName="SiReact" color="highlight" />
                 <TechItem name="Unity" iconName="SiUnity" color="white" />
                 
-                {/* DevOps & Veritabanı */}
+                {/* DevOps & Database */}
                 <TechItem name="Git" iconName="FaGitAlt" color="accent" />
                 <TechItem name="MongoDB" iconName="SiMongodb" color="highlight" />
                 <TechItem name="MariaDB" iconName="SiMariadb" color="secondary" />
@@ -441,7 +442,7 @@ const About = () => {
           </Card>
         </motion.div>
 
-        {/* GitHub Contribution Graf */}
+        {/* GitHub Contribution Graph */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -456,7 +457,7 @@ const About = () => {
           <GitHubContribution />
         </motion.div>
 
-        {/* İletişim Bağlantısı */}
+        {/* Contact Link */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

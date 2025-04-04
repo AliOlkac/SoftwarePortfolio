@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import ProjectModal from "../ProjectModal";
 
-// Proje tipi tanımlaması
+// Project type definition
 interface Project {
   id: number;
   title: string;
@@ -15,81 +15,81 @@ interface Project {
   link: string;
 }
 
-// Projeler - Aboutme.md dosyasından alınan bilgilerle oluşturulmuştur
+// Projects - Created with information from Aboutme.md
 const projects: Project[] = [
   {
     id: 1,
-    title: "Algoritmik Trade Botları",
+    title: "Algorithmic Trading Bots",
     description:
-      "Kripto para ticaretinde kullanılan bir otomatik alım-satım botu, piyasa verilerini analiz etmek için çeşitli teknik göstergeleri (RSI, MACD, Bollinger Bantları gibi) kullanarak, alım ve satım işlemlerini otomatik olarak gerçekleştirir. Bot, Binance API entegrasyonu sayesinde gerçek zamanlı olarak piyasa verilerini takip eder ve belirlenen stratejilere göre alım ve satım yapar.",
+      "An automated trading bot used in cryptocurrency trading that analyzes market data using various technical indicators (such as RSI, MACD, Bollinger Bands) to automatically execute buy and sell transactions. Through Binance API integration, the bot monitors market data in real-time and executes trades according to predetermined strategies.",
     image: "/projects/algo-trading.jpg",
     tags: ["Python", "Trading", "Binance API"],
     link: "https://github.com/AliOlkac",
   },
   {
     id: 2,
-    title: "Yapay Zeka Film Öneri Web Sitesi",
-    description: `Makine öğrenimi tabanlı bir film öneri platformu, kullanıcıların film tercihlerini analiz ederek, benzer zevklere sahip diğer kullanıcıları bulur ve onlardan film önerileri sunar. Bu sistemin temelinde Collaborative Filtering (işbirlikçi filtreleme) tekniği bulunur.
+    title: "AI Movie Recommendation Website",
+    description: `A machine learning-based movie recommendation platform that analyzes users' movie preferences to find other users with similar tastes and provide movie recommendations from them. This system is based on the Collaborative Filtering technique.
 
-Collaborative Filtering, bir kullanıcının beğendiği filmleri, aynı filmleri beğenen diğer kullanıcılarla karşılaştırarak, zevk profilleri benzer olan kişilerden öneriler alır.
+Collaborative Filtering compares a user's liked movies with other users who liked the same movies, getting recommendations from people with similar taste profiles.
 
-Örneğin, bir kullanıcı belirli bir film türünü beğenmişse, aynı türde başka filmler izleyen ve benzer tercihlere sahip diğer kullanıcılardan öneriler alınır.
+For example, if a user likes a certain genre of film, recommendations are taken from other users who watch similar genres and have similar preferences.
 
-Bu yaklaşımda, kullanıcıların geçmişteki film tercihlerine göre "coinüs benzerliği" gibi metrikler kullanılarak, benzerlik ölçümleri yapılır.
+In this approach, similarity measurements are made using metrics such as "cosine similarity" based on users' past movie preferences.
 
-Bu sayede, her bir kullanıcı için, sadece sistemdeki mevcut en popüler filmler değil, gerçekten kendi zevklerine hitap eden kişiselleştirilmiş film önerileri sunulur.`,
+This way, each user is presented with personalized movie recommendations that truly appeal to their tastes, not just the most popular movies in the system.`,
     image: "/projects/ai-movies.jpg",
     tags: ["Machine Learning", "Web Development", "Next.js"],
     link: "https://github.com/AliOlkac",
   },
   {
     id: 3,
-    title: "Zombi Temalı Oyun (Game Jam)",
-    description: `Zombi temalı oyun, ekip olarak katıldığımız bir Game Jam etkinliğinde geliştirdiğimiz bir projedir. Bu oyun, sınırlı bir zaman diliminde, yaratıcı çözümler ve hızlı geliştirme teknikleriyle oluşturulmuştur. Teması, zombi kıyameti sonrası hayatta kalmaya çalışan karakterlerin mücadelelerine dayanır. Oyun, oyunculara aksiyon dolu, heyecan verici bir deneyim sunarken aynı zamanda strateji ve kaynak yönetimini de öne çıkarır.
+    title: "Zombie-Themed Game (Game Jam)",
+    description: `The zombie-themed game is a project we developed as a team during a Game Jam event. This game was created with creative solutions and rapid development techniques within a limited time frame. Its theme is based on the struggles of characters trying to survive after a zombie apocalypse. The game offers players an action-packed, exciting experience while also highlighting strategy and resource management.
 
-Game Jam gibi etkinlikler, hızla prototip oluşturmayı, takım çalışmasını ve yaratıcı düşünmeyi geliştirmek için mükemmel bir fırsattır. Bu projede, tasarımdan kodlamaya kadar her aşamada aktif olarak yer aldım, zorlu zaman kısıtlamalarına rağmen ekip olarak başarılı bir sonuç ortaya koyduk.`,
+Events like Game Jam are an excellent opportunity to develop rapid prototyping, teamwork, and creative thinking. In this project, I was actively involved in every stage from design to coding, and as a team we produced a successful result despite challenging time constraints.`,
     image: "/projects/zombie-game.jpg",
     tags: ["Unity", "C#", "Game Development"],
     link: "https://github.com/AliOlkac",
   },
   {
     id: 4,
-    title: "OSGB Şirketi Web Sitesi",
+    title: "OSGB Company Website",
     description:
-      `İş Sağlığı ve Güvenliği Şirketi İçin Kurumsal Web Sitesi, bir şirketin ihtiyaçlarına yönelik tamamen özelleştirilmiş bir çözüm olarak tasarlandı ve geliştirildi. Bu proje, şirketin hizmetlerini, vizyonunu ve misyonunu dijital ortamda etkin bir şekilde sunmayı hedefliyordu.
+      `A Corporate Website for an Occupational Health and Safety Company was designed and developed as a completely customized solution for a company's needs. This project aimed to effectively present the company's services, vision, and mission in the digital environment.
 
-Web sitesi, kullanıcı dostu bir arayüze sahip olup, hizmetlerin tanıtımı, yasal mevzuatlar, eğitim programları, iş güvenliği raporları ve diğer önemli içerikleri kolayca erişilebilir hale getirir. Aynı zamanda, modern web teknolojileri kullanılarak responsive tasarım, SEO optimizasyonu ve hızlı yükleme süreleri gibi önemli performans kriterlerine dikkat edilmiştir.
+The website has a user-friendly interface and makes services, legal regulations, training programs, occupational safety reports, and other important content easily accessible. At the same time, attention was paid to important performance criteria such as responsive design, SEO optimization, and fast loading times using modern web technologies.
 
-Proje sürecinde, kullanıcı deneyimini ön planda tutarak, kullanıcı dostu navigasyon, görsel öğelerle desteklenen içerik ve mobil uyumlu tasarım gibi unsurların üzerinde yoğunlaşıldı. Bu site, şirketin dijital varlığını güçlendirerek, hedef kitlesine güvenilir ve profesyonel bir imaj sunmasına olanak sağlamaktadır.`,
+During the project process, user experience was prioritized, focusing on user-friendly navigation, content supported by visual elements, and mobile-compatible design. This site strengthens the company's digital presence, allowing it to present a reliable and professional image to its target audience.`,
     image: "/projects/osgb-website.jpg",
     tags: ["Web Development", "HTML/CSS", "JavaScript"],
     link: "https://github.com/AliOlkac",
   },
   {
     id: 5,
-    title: "Amazon Affiliate Kamera Öneri Sitesi",
+    title: "Amazon Affiliate Camera Recommendation Site",
     description:
-      `Amazon Affiliate Ortaklık Programı kapsamında gelir elde etmek için oluşturduğum kamera öneri web sitesi, kullanıcılara çeşitli kamera modelleri hakkında kapsamlı incelemeler ve öneriler sunar. Web sitesi, Amazon'un affiliate programı kullanılarak, ziyaretçilerin önerilen ürünleri satın alması durumunda gelir elde etmeyi amaçlar.
+      `The camera recommendation website I created to generate income through the Amazon Affiliate Partnership Program offers users comprehensive reviews and recommendations about various camera models. The website aims to generate income when visitors purchase recommended products, using Amazon's affiliate program.
 
-Site, kapsamlı ürün incelemeleri, kullanıcı yorumları, ve karşılaştırmalar ile ziyaretçilerin doğru kamerayı seçmelerine yardımcı olmayı hedefler. Her bir kamera için detaylı özellikler, avantajlar ve kullanım alanları üzerinde durulmuş, ziyaretçilerin bilinçli bir karar vermelerini sağlamak amacıyla rehberlik edilmiştir.
+The site aims to help visitors choose the right camera with comprehensive product reviews, user comments, and comparisons. Detailed features, advantages, and usage areas for each camera have been emphasized, guiding visitors to make an informed decision.
 
-Affiliate bağlantılar aracılığıyla, kullanıcılar ürünleri doğrudan Amazon üzerinden satın aldıklarında, sitenin sahibi olarak gelir elde edilir. Bu süreç, sürekli güncellenen içerik ve ürünler aracılığıyla sürdürülebilir bir gelir modeli oluşturulmasına olanak tanır.`,
+Through affiliate links, income is generated as the site owner when users purchase products directly through Amazon. This process allows for the creation of a sustainable income model through continuously updated content and products.`,
     image: "/projects/amazon-affiliate.jpg",
     tags: ["Web Development", "Affiliate Marketing", "Next.js"],
     link: "https://github.com/AliOlkac",
   },
   {
     id: 6,
-    title: "Ses Analizi ile Hastalık Tespiti",
+    title: "Disease Detection with Voice Analysis",
     description:
-      "Üniversitede hocalar ve doktorlarla birlikte ses analizi kullanarak hastalık tespiti yapabilen bir mobil uygulama projesi...",
+      "A mobile application project that can detect diseases using voice analysis, developed in collaboration with professors and doctors at the university...",
     image: "/projects/sound-analysis.jpg",
     tags: ["Mobile Development", "Machine Learning", "React Native"],
     link: "https://github.com/AliOlkac",
   },
 ];
 
-// Proje kartı bileşeni
+// Project card component
 const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({
   project,
   onClick,
@@ -138,7 +138,7 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({
             onClick();
           }}
         >
-          Daha Fazla Bilgi
+          More Information
         </button>
       </div>
       <div className="absolute inset-0 border border-highlight/20 rounded-lg z-20 group-hover:border-highlight/60 group-hover:shadow-neon-green transition-all duration-300"></div>
@@ -163,10 +163,9 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 text-highlight">Projelerim</h2>
+          <h2 className="text-4xl font-bold mb-4 text-highlight">My Projects</h2>
           <p className="text-white/80 max-w-2xl mx-auto">
-            Geliştirdiğim başlıca projeler ile yazılım dünyasındaki
-            deneyimlerimi keşfedin.
+            Explore my software development experiences through my main projects.
           </p>
         </motion.div>
 

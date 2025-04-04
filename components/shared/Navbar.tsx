@@ -15,29 +15,29 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Scroll durumunu belirle
+      // Determine scroll state
       if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
 
-      // Ana sayfada olduğumuzda bile scroll pozisyonunda aktif bölümü değiştirmiyoruz
-      // Aktif bölüm her zaman Ana Sayfa olarak kalıyor
+      // We don't change the active section based on scroll position when on the home page
+      // The active section always remains as Home
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
-  // Sayfa yüklendiğinde veya path değiştiğinde aktif bölümü ayarla
+  // Set active section when page loads or path changes
   useEffect(() => {
-    // Ana sayfa için özel durum
+    // Special case for home page
     if (pathname === '/') {
-      // Ana sayfada olduğumuzda, Ana Sayfa linkini aktif yap
+      // When on the home page, make the Home link active
       setActiveSection('/');
     } else {
-      // Diğer sayfalarda path'e göre aktif bölümü belirle
+      // For other pages, determine the active section based on the path
       setActiveSection(pathname);
     }
   }, [pathname]);
@@ -141,7 +141,7 @@ const Navbar = () => {
             className={`text-gray-300 hover:text-primary transition-colors p-2 rounded-full ${
               isMobileMenuOpen ? 'text-primary' : ''
             }`}
-            aria-label={isMobileMenuOpen ? "Menüyü Kapat" : "Menüyü Aç"}
+            aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
           >
             <div className="w-6 flex flex-col items-end space-y-1.5">
               <span 

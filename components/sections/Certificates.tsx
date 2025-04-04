@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 
-// Sertifika tipi tanımlaması
+// Certificate type definition
 interface Certificate {
   id: number;
   title: string;
@@ -14,11 +14,11 @@ interface Certificate {
   pdfFile: string;
 }
 
-// Sertifikalar
+// Certificates
 const certificates: Certificate[] = [
   {
     id: 1,
-    title: "Web Geliştirme Bootcamp",
+    title: "Web Development Bootcamp",
     issuer: "Udemy",
     date: "2022",
     image: "/certificates/UdemyWebGelistirme_page-0001.jpg",
@@ -74,7 +74,7 @@ const certificates: Certificate[] = [
   },
 ];
 
-// Sertifika kartı bileşeni
+// Certificate card component
 const CertificateCard: React.FC<{ certificate: Certificate }> = ({
   certificate,
 }) => {
@@ -98,7 +98,7 @@ const CertificateCard: React.FC<{ certificate: Certificate }> = ({
           />
         </div>
         
-        {/* Hover efekti ile görünür olan PDF indirme butonu */}
+        {/* PDF download button visible with hover effect */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <a 
             href={certificate.pdfFile}
@@ -109,7 +109,7 @@ const CertificateCard: React.FC<{ certificate: Certificate }> = ({
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            <span>PDF İndir</span>
+            <span>Download PDF</span>
           </a>
         </div>
       </div>
@@ -125,7 +125,7 @@ const CertificateCard: React.FC<{ certificate: Certificate }> = ({
         <div className="flex justify-between items-center">
           <p className="text-xs text-gray-400">{certificate.date}</p>
           <span className="text-xs px-2 py-1 bg-highlight/20 text-highlight rounded-full border border-highlight/40 group-hover:bg-highlight/30 group-hover:border-highlight/70 transition-all duration-300">
-            Sertifika
+            Certificate
           </span>
         </div>
       </div>
@@ -145,9 +145,9 @@ const Certificates = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 text-highlight">Sertifikalarım</h2>
+          <h2 className="text-4xl font-bold mb-4 text-highlight">My Certificates</h2>
           <p className="text-white/80 max-w-2xl mx-auto">
-            Tamamladığım kurslar ve kazandığım sertifikalar ile sürekli kendimi geliştiriyorum.
+            I continuously improve myself with the courses I&apos;ve completed and the certificates I&apos;ve earned.
           </p>
         </motion.div>
 

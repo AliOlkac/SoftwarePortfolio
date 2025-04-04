@@ -5,25 +5,22 @@ import Container from "@/components/ui/Container";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* İçerik */}
+      {/* Content */}
       <Container className="relative z-30">
         <div className="flex flex-col items-center text-center">
-          <div className="mb-6">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-4 neon-text">
+          <div className="mb-10">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 neon-text">
               Ali Olkaç
             </h1>
-            <h2 className="text-2xl md:text-4xl font-bold leading-tight mb-4 text-gradient">
-              Full-Stack Ninja Developer
+            <h2 className="text-xl md:text-3xl font-medium mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+              Software Engineer | Web Developer
             </h2>
-            <p className="text-sm md:text-lg text-text-secondary max-w-xs md:max-w-2xl mx-auto px-2">
-              Modern teknolojilerle sağlam, ölçeklenebilir çözümler
-              geliştiriyorum. Kod yazarken sadece çözüm değil, değer üretmeye
-              odaklanıyorum —{" "}
-              <span className="text-orange">Ninja disipliniyle</span>
+            <div className="h-0.5 w-24 bg-primary/50 mx-auto my-6"></div>
+            <p className="text-base md:text-xl text-gray-300 max-w-lg md:max-w-2xl mx-auto px-4">
+              Crafting elegant digital experiences with clean code and innovative solutions.
+              Specialized in modern web technologies and performance optimization.
             </p>
           </div>
-
-         
         </div>
       </Container>
 

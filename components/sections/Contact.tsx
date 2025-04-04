@@ -27,16 +27,16 @@ const Contact = () => {
       username: 'aliolkac_43'
     },
     {
-      name: 'E-posta',
+      name: 'Email',
       icon: <FaEnvelope size={24} />,
       url: 'mailto:aliolkac43@gmail.com',
       username: 'aliolkac43@gmail.com'
     },
     {
-      name: 'Konum',
+      name: 'Location',
       icon: <FaMapMarkerAlt size={24} />,
       url: 'https://maps.google.com/?q=Kutahya,Turkey',
-      username: 'Kütahya, Türkiye'
+      username: 'Kütahya, Turkey'
     }
   ];
 
@@ -50,14 +50,14 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 text-blue-neon blue-pulse">İletişim</h2>
+          <h2 className="text-4xl font-bold mb-4 text-blue-neon blue-pulse">Contact</h2>
           <p className="text-white/80 max-w-2xl mx-auto">
-            Projeleriniz, iş birliği fırsatları veya herhangi bir soru için benimle iletişime geçebilirsiniz.
+            You can contact me for your projects, collaboration opportunities, or any questions.
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          {/* İletişim Kartı */}
+          {/* Contact Card */}
           <motion.div 
             className="bg-gray-900/50 glass-effect rounded-xl border-3 border-primary/60 border-blue-glow p-8 md:p-12"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -65,16 +65,16 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            {/* Üst Bölüm - Başlık ve Açıklama */}
+            {/* Top Section - Title and Description */}
             <div className="text-center mb-12">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-blue-neon">Bana Ulaşın</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-blue-neon">Get In Touch</h3>
               <p className="text-white/70 max-w-2xl mx-auto">
-                Aşağıdaki iletişim kanallarından herhangi biri aracılığıyla benimle iletişime geçebilirsiniz. 
-                En kısa sürede size dönüş yapacağım.
+                You can contact me through any of the communication channels below.
+                I will get back to you as soon as possible.
               </p>
             </div>
             
-            {/* İletişim Bağlantıları */}
+            {/* Contact Links */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {socialLinks.map((link, index) => (
                 <motion.div
@@ -91,7 +91,7 @@ const Contact = () => {
                     <h4 className="text-lg font-semibold text-white">{link.name}</h4>
                     <Link 
                       href={link.url} 
-                      target={link.name !== 'E-posta' ? '_blank' : undefined}
+                      target={link.name !== 'Email' ? '_blank' : undefined}
                       rel="noopener noreferrer"
                       className="text-white/70 hover-blue-glow"
                     >
@@ -101,12 +101,12 @@ const Contact = () => {
                   <div className="hidden md:block">
                     <Link 
                       href={link.url} 
-                      target={link.name !== 'E-posta' ? '_blank' : undefined}
+                      target={link.name !== 'Email' ? '_blank' : undefined}
                       rel="noopener noreferrer"
                       className="relative w-[76px] h-[76px] block overflow-hidden outline-none bg-transparent cursor-pointer group"
-                      aria-label={`${link.name} hesabıma git`}
+                      aria-label={`Go to my ${link.name} account`}
                     >
-                      {/* Dış halka - normal durum */}
+                      {/* Outer ring - normal state */}
                       <span 
                         className="absolute inset-[7px] rounded-full border-3 border-primary transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:scale-[0.7]"
                         style={{
@@ -116,7 +116,7 @@ const Contact = () => {
                         }}
                       ></span>
                       
-                      {/* Dış halka - hover durumu */}
+                      {/* Outer ring - hover state */}
                       <span 
                         className="absolute inset-[7px] rounded-full border-4 border-blue-400 opacity-0 scale-[1.3] transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-100"
                         style={{
@@ -126,16 +126,16 @@ const Contact = () => {
                         }}
                       ></span>
                       
-                      {/* İkon kutusu */}
+                      {/* Icon box */}
                       <div className="absolute top-0 left-0 flex transition-transform duration-400 group-hover:translate-x-[-69px]">
-                        {/* İlk ikon */}
+                        {/* First icon */}
                         <span className="block w-[30px] h-[30px] mt-[24px] mx-[22px]">
                           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-primary">
                             <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
                           </svg>
                         </span>
                         
-                        {/* İkinci ikon */}
+                        {/* Second icon */}
                         <span className="block w-[30px] h-[30px] mt-[24px] mx-[22px]">
                           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-primary">
                             <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
@@ -148,7 +148,7 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Mesaj */}
+            {/* Message */}
             <motion.div 
               className="mt-12 text-center"
               initial={{ opacity: 0 }}
@@ -157,8 +157,8 @@ const Contact = () => {
               viewport={{ once: true }}
             >
               <p className="text-white/80 italic">
-                &ldquo;Projelerinizi hayata geçirmek veya birlikte çalışmak için sabırsızlanıyorum.
-                <br />Yazılım dünyasında başarıya giden yolda birlikte ilerleyelim!&rdquo;
+                &ldquo;I&apos;m looking forward to bringing your projects to life or working together.
+                <br />Let&apos;s move forward together on the path to success in the software world!&rdquo;
               </p>
               <div className="mt-6">
                 <div className="inline-block h-1 w-16 bg-primary/70 rounded"></div>
@@ -166,7 +166,7 @@ const Contact = () => {
             </motion.div>
           </motion.div>
           
-          {/* Harita Bağlantısı */}
+          {/* Map Link */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -180,7 +180,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center text-primary hover-blue-glow"
             >
-              <FaMapMarkerAlt className="mr-2" /> Kütahya, Türkiye konumumu haritada görüntüle
+              <FaMapMarkerAlt className="mr-2" /> View my location in Kütahya, Turkey on the map
             </Link>
           </motion.div>
         </div>

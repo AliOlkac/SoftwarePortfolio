@@ -7,9 +7,9 @@ import Link from 'next/link';
 import { FaDownload, FaEye } from 'react-icons/fa';
 
 const CV = () => {
-  // CV PDF'inin yolu
+  // Path to CV PDF
   const cvPdfPath = '/cv/AliOlkac_CV.pdf';
-  // CV görsel önizleme resimlerinin yolları (birden fazla sayfa için)
+  // Paths to CV preview images (for multiple pages)
   const cvPreviewImages = ['/cv/cv-preview.png'];
 
   return (
@@ -22,14 +22,14 @@ const CV = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4 text-orange orange-pulse">Özgeçmişim</h2>
+          <h2 className="text-4xl font-bold mb-4 text-orange orange-pulse">My Resume</h2>
           <p className="text-white/80 max-w-2xl mx-auto">
-            Eğitim ve deneyimlerime dair detaylı bilgileri içeren özgeçmişimi inceleyebilir ve PDF olarak indirebilirsiniz.
+            You can review my resume containing detailed information about my education and experience, and download it as a PDF.
           </p>
         </motion.div>
 
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 max-w-6xl mx-auto">
-          {/* CV Önizleme Bölümü */}
+          {/* CV Preview Section */}
           <motion.div 
             className="w-full lg:w-2/3"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -43,7 +43,7 @@ const CV = () => {
                   <div key={index} className="relative aspect-[1/1.414] w-full shadow-lg">
                     <Image
                       src={image}
-                      alt={`CV Sayfası ${index + 1}`}
+                      alt={`CV Page ${index + 1}`}
                       fill
                       className="object-contain rounded"
                       priority={index === 0}
@@ -52,19 +52,19 @@ const CV = () => {
                 ))}
               </div>
               
-              {/* Önizleme Büyütme Butonu */}
+              {/* Preview Enlargement Button */}
               <Link 
                 href={cvPreviewImages[0]} 
                 target="_blank" 
                 className="absolute top-6 right-6 p-3 bg-black/40 rounded-full text-orange hover:bg-orange/20 transition-colors duration-300 shadow-orange-neon"
-                aria-label="CV'yi tam boyutta görüntüle"
+                aria-label="View CV in full size"
               >
                 <FaEye size={20} />
               </Link>
             </div>
           </motion.div>
 
-          {/* Sağ Taraf - Bilgiler ve İndirme Butonu */}
+          {/* Right Side - Information and Download Button */}
           <motion.div 
             className="w-full lg:w-1/3 glass-effect rounded-lg p-6 border-3 border-orange/60 border-orange-glow relative overflow-hidden"
             initial={{ opacity: 0, x: 20 }}
@@ -72,7 +72,7 @@ const CV = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            {/* Arka plan dekoratif öğeler */}
+            {/* Background decorative elements */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-orange/5 rounded-full -mr-10 -mt-10 z-0"></div>
             <div className="absolute bottom-0 left-0 w-40 h-40 bg-orange/5 rounded-full -ml-20 -mb-20 z-0"></div>
             
@@ -88,7 +88,7 @@ const CV = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-orange">Ali Olkaç</h3>
-                  <p className="text-white/70">Bilgisayar Mühendisi</p>
+                  <p className="text-white/70">Computer Engineer</p>
                 </div>
               </motion.div>
               
@@ -106,12 +106,12 @@ const CV = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-orange/90 mb-2 flex items-center">
-                      Eğitim
+                      Education
                       <span className="inline-block ml-2 w-12 h-[1px] bg-orange/30"></span>
                     </h4>
                     <div className="pl-2 border-l-2 border-orange/30">
-                      <p className="text-white/90 font-medium">Balıkesir Üniversitesi</p>
-                      <p className="text-white/90">Bilgisayar Mühendisliği</p>
+                      <p className="text-white/90 font-medium">Balikesir University</p>
+                      <p className="text-white/90">Computer Engineering</p>
                       <p className="text-orange/70 text-sm">2021 - 2025</p>
                     </div>
                   </div>
@@ -130,21 +130,21 @@ const CV = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-orange/90 mb-2 flex items-center">
-                      Deneyim
+                      Experience
                       <span className="inline-block ml-2 w-12 h-[1px] bg-orange/30"></span>
                     </h4>
                     <div className="space-y-3">
                       <div className="pl-2 border-l-2 border-orange/30">
                         <p className="text-white/90 font-medium">2KEKGAMES</p>
-                        <p className="text-white/70">Stajyer</p>
+                        <p className="text-white/70">Intern</p>
                         <p className="text-orange/70 text-sm">2023</p>
-                        <p className="text-white/80 text-sm mt-1">Algoritmik trading üzerine staj deneyimi</p>
+                        <p className="text-white/80 text-sm mt-1">Internship experience in algorithmic trading</p>
                       </div>
                       <div className="pl-2 border-l-2 border-orange/30">
                         <p className="text-white/90 font-medium">ELI (Ege Linyit İşletmeleri)</p>
-                        <p className="text-white/70">Stajyer</p>
+                        <p className="text-white/70">Intern</p>
                         <p className="text-orange/70 text-sm">2022</p>
-                        <p className="text-white/80 text-sm mt-1">Web sitesi tasarımı üzerine staj deneyimi</p>
+                        <p className="text-white/80 text-sm mt-1">Internship experience in website design</p>
                       </div>
                     </div>
                   </div>
@@ -163,7 +163,7 @@ const CV = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-orange/90 mb-2 flex items-center">
-                      Beceriler
+                      Skills
                       <span className="inline-block ml-2 w-12 h-[1px] bg-orange/30"></span>
                     </h4>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2">
@@ -196,7 +196,7 @@ const CV = () => {
                 </motion.div>
               </div>
               
-              {/* İndirme Butonu */}
+              {/* Download Button */}
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -209,7 +209,7 @@ const CV = () => {
                   download="AliOlkac_CV.pdf"
                   className="mt-8 w-full py-3 px-6 flex items-center justify-center bg-orange/20 hover:bg-orange/30 text-orange border border-orange/60 rounded-lg transition-all duration-300 shadow-orange-neon hover:shadow-[0_0_20px_rgba(255,165,0,0.9)] group"
                 >
-                  <FaDownload className="mr-2 group-hover:animate-bounce" /> CV&apos;yi İndir (PDF)
+                  <FaDownload className="mr-2 group-hover:animate-bounce" /> Download CV (PDF)
                 </Link>
               </motion.div>
             </div>

@@ -1,9 +1,9 @@
-// Site bilgileri
+// Site information
 export const siteConfig = {
   name: 'Ali Olkaç',
   siteName: 'Ali Olkaç',
-  title: 'Bilgisayar Mühendisliği Öğrencisi & Full-Stack Developer',
-  description: 'Modern web teknolojileri ile kullanıcı dostu ve performanslı uygulamalar geliştiriyorum.',
+  title: 'Computer Engineering Student & Full-Stack Developer',
+  description: 'I develop user-friendly and high-performance applications with modern web technologies.',
   url: 'https://aliolkac.com',
   ogImage: 'https://aliolkac.com/og.jpg',
   links: {
@@ -19,15 +19,15 @@ export const siteConfig = {
   email: 'aliolkac43@gmail.com'
 }
 
-// Navigasyon linkleri
+// Navigation links
 export const navLinks = [
-  { title: 'Ana Sayfa', path: '/', name: 'Ana Sayfa', href: '/' },
-  { title: 'Projeler & Sertifikalar', path: '/projects', name: 'Projeler & Sertifikalar', href: '/projects' },
+  { title: 'Home', path: '/', name: 'Home', href: '/' },
+  { title: 'Projects & Certificates', path: '/projects', name: 'Projects & Certificates', href: '/projects' },
   { title: 'CV', path: '/cv', name: 'CV', href: '/cv' },
-  { title: 'İletişim', path: '/contact', name: 'İletişim', href: '/contact' },
+  { title: 'Contact', path: '/contact', name: 'Contact', href: '/contact' },
 ]
 
-// Teknoloji stack'i - iconName kullanarak React componenti içinde ilgili iconu göstereceğiz
+// Technology stack - we'll display the related icon using iconName in the React component
 export const techStack = [
   { name: 'React', iconName: 'FaReact', color: 'primary' },
   { name: 'Next.js', iconName: 'SiNextdotjs', color: 'white' },
@@ -43,20 +43,20 @@ export const techStack = [
   { name: 'GraphQL', iconName: 'SiGraphql', color: 'accent' },
 ]
 
-// Projeler
+// Projects
 export const projects = [
   {
-    title: 'Proje 1',
-    description: 'Proje açıklaması buraya gelecek.',
+    title: 'Project 1',
+    description: 'Project description will go here.',
     technologies: ['React', 'Next.js', 'TypeScript'],
     image: '/images/project1.jpg',
     github: 'https://github.com/aliolkac/project1',
     demo: 'https://project1.aliolkac.com',
   },
-  // Diğer projeler buraya eklenecek
+  // Other projects will be added here
 ]
 
-// Animasyon varyantları
+// Animation variants
 export const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -71,7 +71,7 @@ export const staggerContainer = {
   },
 }
 
-// Sayfa geçiş animasyonları
+// Page transition animations
 export const pageTransition = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },

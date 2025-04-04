@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
-// Proje tipi tanımlaması - Projects.tsx ile aynı
+// Project type definition - Same as Projects.tsx
 interface Project {
   id: number;
   title: string;
@@ -20,9 +20,9 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
-  // ESC tuşu ile modalı kapatma
+  // Close modal with ESC key
   useEffect(() => {
-    if (!project) return; // Proje yoksa hiçbir şey yapma
+    if (!project) return; // Do nothing if there's no project
 
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -32,12 +32,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
     
     window.addEventListener('keydown', handleEsc);
     
-    // Scroll'u engelle - yalnızca modal açıkken
+    // Prevent scrolling - only when modal is open
     document.body.style.overflow = 'hidden';
     
     return () => {
       window.removeEventListener('keydown', handleEsc);
-      // Modal kapandığında scroll'u tekrar etkinleştir
+      // Re-enable scrolling when modal is closed
       document.body.style.overflow = '';
     };
   }, [onClose, project]);
@@ -46,7 +46,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
     <AnimatePresence>
       {project && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
-          {/* Overlay - tıklanabilir arka plan */}
+          {/* Overlay - clickable background */}
           <motion.div 
             className="absolute inset-0 bg-transparent"
             initial={{ opacity: 0 }}
@@ -55,7 +55,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             onClick={onClose}
           />
           
-          {/* Modal İçeriği */}
+          {/* Modal Content */}
           <motion.div 
             className="relative z-10 max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-xl bg-gray-900/95 glass-effect border-2 border-highlight/30"
             initial={{ scale: 0.9, opacity: 0 }}
@@ -63,20 +63,20 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
-            {/* Kapatma Butonu */}
+            {/* Close Button */}
             <button 
               className="absolute top-3 right-3 z-30 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-highlight/80 transition-colors duration-300"
               onClick={onClose}
-              aria-label="Modalı kapat"
+              aria-label="Close modal"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
             
-            {/* Proje Detayları */}
+            {/* Project Details */}
             <div className="flex flex-col">
-              {/* İçerik Alanı */}
+              {/* Content Area */}
               <div className="p-8 flex flex-col">
                 <h2 className="text-3xl font-bold mb-4 text-highlight">{project.title}</h2>
                 
@@ -95,7 +95,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                   target="_blank" 
                   className="self-start py-2 px-4 bg-highlight/20 text-highlight border border-highlight/50 rounded-md hover:bg-highlight/30 transition-colors duration-300 flex items-center"
                 >
-                  <span>Projeyi İncele</span>
+                  <span>View Project</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>

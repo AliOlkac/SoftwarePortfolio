@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className="bg-background/50 border-t border-primary/10 pt-12 pb-8">
       <Container>
         <div className="flex flex-col md:flex-row justify-between mb-8 gap-8">
-          {/* Logo ve Açıklama */}
+          {/* Logo and Description */}
           <div className="max-w-sm">
             <Link href="/" className="inline-block mb-4">
               <span className="text-2xl font-bold neon-text text-primary">
@@ -21,8 +21,8 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-text-secondary mb-4">
-              Modern web teknolojileri ve yazılım geliştirme konularında kendimi geliştiriyorum. 
-              Kullanıcı deneyimine odaklanan, performans odaklı uygulamalar geliştirmeyi seviyorum.
+              I am continuously improving myself in modern web technologies and software development.
+              I enjoy developing user experience-focused, performance-oriented applications.
             </p>
             <div className="flex space-x-4">
               <motion.a 
@@ -58,10 +58,10 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Hızlı Bağlantılar */}
+          {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-primary">
-              Hızlı Bağlantılar
+              Quick Links
             </h3>
             <ul className="space-y-2">
               {navLinks.map((link) => (
@@ -77,10 +77,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* İletişim */}
+          {/* Contact */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-secondary">
-              İletişim
+              Contact
             </h3>
             <ul className="space-y-2">
               <li className="text-text-secondary">
@@ -90,19 +90,19 @@ const Footer = () => {
                 </a>
               </li>
               <li className="text-text-secondary">
-                <span className="block">Konum:</span>
-                <span className="block">Kutahya, Türkiye</span>
+                <span className="block">Location:</span>
+                <span className="block">Kutahya, Turkey</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Alt Bölüm */}
+        {/* Bottom Section */}
         <div className="border-t border-primary/10 pt-6 mt-6 text-center text-text-secondary text-sm">
           <p className="flex items-center justify-center">
-            © {currentYear} {siteConfig.siteName}. Tüm hakları saklıdır.
+            © {currentYear} {siteConfig.siteName}. All rights reserved.
             <span className="inline-flex items-center ml-2">
-              <span className="mr-1">ile yapıldı</span>
+              <span className="mr-1">made with</span>
               <FaHeart className="text-accent text-xs inline animate-pulse" />
             </span>
           </p>
