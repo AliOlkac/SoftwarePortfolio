@@ -77,16 +77,7 @@ Through affiliate links, income is generated as the site owner when users purcha
     image: "/projects/amazon-affiliate.jpg",
     tags: ["Web Development", "Affiliate Marketing", "Next.js"],
     link: "https://github.com/AliOlkac",
-  },
-  {
-    id: 6,
-    title: "Disease Detection with Voice Analysis",
-    description:
-      "A mobile application project that can detect diseases using voice analysis, developed in collaboration with professors and doctors at the university...",
-    image: "/projects/sound-analysis.jpg",
-    tags: ["Mobile Development", "Machine Learning", "React Native"],
-    link: "https://github.com/AliOlkac",
-  },
+  }
 ];
 
 // Project card component
