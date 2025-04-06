@@ -1,36 +1,172 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ali Olkaç Portfolio Website
 
-## Getting Started
+<div align="center">
+  <img src="public/images/logo.png" alt="Portfolio Logo" width="200" />
+  <br>
+  <h3>A modern and interactive personal portfolio website</h3>
+</div>
 
-First, run the development server:
+## 📋 About the Project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project is a modern and interactive portfolio website. It is developed using Next.js 15, React 19, TypeScript, and Tailwind CSS. It includes 3D models, animations, and interactive components. The project is designed to showcase my software development skills, projects, and experiences.
+
+## 🚀 Features
+
+- ✨ Modern, responsive, and interactive UI/UX design
+- 🎨 Customized styles with Tailwind CSS
+- 🌐 High-performance website developed with Next.js and React
+- 📱 Responsive design compatible with all devices (Mobile, Tablet, Desktop)
+- 🔄 Smooth animations with Framer Motion
+- 📊 GitHub contribution graph integration
+- 📝 Detailed CV and portfolio sections
+- 📑 Certificate gallery
+- 🔍 SEO optimization
+
+## 🛠️ Technologies
+
+- **Frontend**:
+  - Next.js 15
+  - React 19
+  - TypeScript
+  - Tailwind CSS
+  - Framer Motion (Animations)
+
+- **Optimization**:
+  - Next.js Image Optimization
+  - WebP format support
+  - Critters (CSS optimization)
+  - Lazy Loading
+  - Code Splitting
+
+- **Other Tools**:
+  - ESLint and Prettier (Code quality)
+  - Husky (Git hooks)
+  - Next.js Bundle Analyzer (Bundle optimization)
+
+## 💻 Setup and Run
+
+### Requirements
+
+- Node.js (at least v18.17 or higher)
+- npm or yarn
+
+### Installation Steps
+
+1. Clone the project:
+   ```bash
+   git clone https://github.com/AliOlkac/AliOlkac_Portfolio.git
+   cd AliOlkac_Portfolio
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open in your browser: [http://localhost:3000]
+
+### Building for Production
+
+1. Optimize images and PDFs:
+   ```bash
+   npm run optimize
+   # or
+   yarn optimize
+   ```
+
+2. Build the production version:
+   ```bash
+   npm run build
+   # or
+   yarn build
+   ```
+
+3. Start the production server:
+   ```bash
+   npm run start
+   # or
+   yarn start
+   ```
+
+## 📂 Project Structure
+
+```
+AliOlkac_Portfolio/
+├── app/                    # Next.js 15 app router
+│   ├── contact/            # Contact page
+│   ├── cv/                 # CV page
+│   ├── projects/           # Projects page
+│   ├── page.tsx            # Main page
+│   ├── layout.tsx          # Main layout
+│   └── globals.css         # Global CSS
+├── components/             # React components
+│   ├── sections/           # Main section components
+│   ├── shared/             # Shared components
+│   ├── ui/                 # UI components
+│   └── providers/          # Context providers
+├── lib/                    # Helper functions
+├── public/                 # Static files
+│   ├── images/             # Images
+│   ├── projects/           # Project images
+│   ├── certificates/       # Certificate images
+│   ├── cv/                 # CV files
+│   └── fonts/              # Fonts
+├── scripts/                # Build and optimization scripts
+├── styles/                 # Additional style files
+├── tailwind.config.ts      # Tailwind configuration
+├── next.config.js          # Next.js configuration
+└── package.json            # Project dependencies
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Performance Optimizations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To provide the best user experience, the project includes various optimizations:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Image Optimization**:
+   - WebP format support
+   - Lazy loading
+   - Automatic resizing
+   - Image caching
 
-## Learn More
+2. **JS & CSS Optimization**:
+   - Code splitting
+   - Critical CSS inlining (Critters)
+   - Tree-shaking
 
-To learn more about Next.js, take a look at the following resources:
+3. **Performance Monitoring**:
+   - Bundle analyzer integration
+   - Measurement of performance metrics
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/amazing-feature`)
+3. Commit your Changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the Branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## Deploy on Vercel
+## 📝 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the [MIT](LICENSE) License.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📬 Contact
+
+- **Website**: [aliolkac.com](https://aliolkac.com)
+- **Email**: [iletisim@aliolkac.com](mailto:iletisim@aliolkac.com)
+- **GitHub**: [@aliolkac](https://github.com/aliolkac)
+- **LinkedIn**: [Ali Olkaç](https://linkedin.com/in/aliolkac)
+
+---
+
+<div align="center">
+  <p>© 2025 Ali Olkaç. All rights reserved.</p>
+</div>
