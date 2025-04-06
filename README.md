@@ -8,6 +8,8 @@
 
 ## 📋 About the Project
 
+![Portfolio Screenshot](public/images/portfolio-screenshot.png)
+
 This project is a modern and interactive portfolio website. It is developed using Next.js 15, React 19, TypeScript, and Tailwind CSS. It includes 3D models, animations, and interactive components. The project is designed to showcase my software development skills, projects, and experiences.
 
 ## 🚀 Features
