@@ -52,8 +52,8 @@ This project is a modern and interactive portfolio website. It is developed usin
 
 1. Clone the project:
    ```bash
-   git clone https://github.com/AliOlkac/AliOlkac_Portfolio.git
-   cd AliOlkac_Portfolio
+   git clone https://github.com/AliOlkac/SoftwarePortfolio.git
+   cd SoftwarePortfolio
    ```
 
 2. Install dependencies:
