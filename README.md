@@ -1,10 +1,6 @@
 # Ali Olkaç Portfolio Website
 
-<div align="center">
-  <img src="public/images/logo.png" alt="Portfolio Logo" width="200" />
-  <br>
-  <h3>A modern and interactive personal portfolio website</h3>
-</div>
+#                       aliolkac.com.tr
 
 ## 📋 About the Project
 
@@ -162,7 +158,7 @@ This project is licensed under the [MIT](LICENSE) License.
 
 ## 📬 Contact
 
-- **Website**: [aliolkac.com](https://aliolkac.com)
+- **Website**: [aliolkac.com.tr](https://aliolkac.com.tr)
 - **Email**: [iletisim@aliolkac.com](mailto:iletisim@aliolkac.com)
 - **GitHub**: [@aliolkac](https://github.com/aliolkac)
 - **LinkedIn**: [Ali Olkaç](https://linkedin.com/in/aliolkac)
