@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import ProjectModal from "../ProjectModal";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 // Project type definition
 interface Project {
@@ -22,17 +23,18 @@ const projects: Project[] = [
     title: "AI Movie Recommendation Website",
     description: `A machine learning-based movie recommendation platform that analyzes users' viewing habits and preferences to find similar users and provide personalized movie suggestions. Using collaborative filtering and cosine similarity, the system delivers recommendations that truly match each user's taste, not just the most popular titles. Built with Next.js for a fast, modern, and user-friendly experience.`,
     image: "/projects/movies-ai.png",
-    tags: ["Machine Learning", "Web Development", "Next.js"],
+    tags: ["Machine Learning", "Web Development", "Next.js","Pandas","Numpy","Scikit-learn","Cosine Similarity","Collaborative Filtering"],
     link: "https://www.movierecommendation.online",
   },
   {
     id: 2,
-    title: "Zombie-Themed Game (Game Jam)",
-    description: `Developed in a fast-paced Game Jam event, this zombie-themed game challenges players to survive in a post-apocalyptic world. Combining action, strategy, and resource management, the game was built with Unity and C# under strict time constraints. It highlights teamwork, rapid prototyping, and creative problem-solving.`,
-    image: "/projects/zombie-game.jpg",
-    tags: ["Unity", "C#", "Game Development"],
-    link: "https://github.com/AliOlkac/Timelock-Dead-Zone",
+    title: "Amazon Affiliate Camera Recommendation Site",
+    description: `A camera review and recommendation site created to generate income through the Amazon Affiliate Program. Users can find detailed product reviews, comparisons, and user feedback to help them choose the best camera. The site is built with Next.js, optimized for SEO and performance, and features a sustainable affiliate income model.`,
+    image: "/projects/amazon-affiliate.jpg",
+    tags: ["Web Development", "Affiliate Marketing", "Next.js","Tailwind CSS"],
+    link: "https://www.bestcamerareview.com",
   },
+
   {
     id: 3,
     title: "OSGB Company Website",
@@ -43,20 +45,32 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Amazon Affiliate Camera Recommendation Site",
-    description: `A camera review and recommendation site created to generate income through the Amazon Affiliate Program. Users can find detailed product reviews, comparisons, and user feedback to help them choose the best camera. The site is built with Next.js, optimized for SEO and performance, and features a sustainable affiliate income model.`,
-    image: "/projects/amazon-affiliate.jpg",
-    tags: ["Web Development", "Affiliate Marketing", "Next.js"],
-    link: "https://www.bestcamerareview.com",
+    title: "Portfolio Website",
+    description: `A personal portfolio website to showcase my software engineering projects, skills, and certificates. Built with Next.js and React, featuring a modern UI, responsive design, and smooth animations. The site is optimized for performance and accessibility, providing a seamless experience across devices. Includes sections for projects, certificates, CV, and contact information.`,
+    image: "/projects/portfolio.png",
+    tags: ["Next.js", "React", "Portfolio", "Frontend","Tailwind CSS"],
+    link: "https://www.aliolkac.com.tr",
   },
+
   {
     id: 5,
+    title: "Zombie-Themed Game (Game Jam)",
+    description: `Developed in a fast-paced Game Jam event, this zombie-themed game challenges players to survive in a post-apocalyptic world. Combining action, strategy, and resource management, the game was built with Unity and C# under strict time constraints. It highlights teamwork, rapid prototyping, and creative problem-solving.`,
+    image: "/projects/zombie-game.jpg",
+    tags: ["Unity", "C#", "Game Development"],
+    link: "https://github.com/AliOlkac/Timelock-Dead-Zone",
+  },
+  
+  
+  {
+    id: 6,
     title: "Algorithmic Trading Bots",
     description: `An automated trading bot for cryptocurrency markets that analyzes real-time data using technical indicators (RSI, MACD, Bollinger Bands) and executes trades based on predefined strategies. Integrated with the Binance API for live data and fast execution. Developed in Python, this project demonstrates the power of algorithmic trading and financial automation.`,
     image: "/projects/algo-trading.jpg",
-    tags: ["Python", "Trading", "Binance API"],
+    tags: ["Python","Pandas","Numpy","Trading", "Binance API","Machine Learning","Data Analysis","Data Visualization"],
     link: "https://github.com/AliOlkac",
   }
+ 
 ];
 
 // Project card component
@@ -87,19 +101,21 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({
       whileHover={{ y: -5 }}
       onClick={handleCardClick}
     >
-      {/* Proje görseli */}
-      <div className="relative w-full h-[65%] bg-black/40">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            style={{ objectFit: "cover" }}
-            className="z-0 brightness-[0.9] transition-all duration-300 group-hover:scale-105"
-          />
+      {/* Proje görseli ve üzerine gelecek ikon */}
+      <div className="relative w-full h-[65%] bg-black/40 group">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          style={{ objectFit: "cover" }}
+          className="z-0 brightness-[0.9] transition-all duration-300 group-hover:scale-105 group-hover:brightness-75"
+        />
+        {/* Sağ üst köşe ikonu - her zaman görünür, hover ile efektli */}
+        <div className="absolute top-4 right-4 z-10">
+          <ArrowUpRightIcon className="h-8 w-8 text-white bg-black/50 rounded-full p-1 group-hover:bg-highlight/80 group-hover:scale-110 transition-all duration-300" />
         </div>
       </div>
-      {/* Proje başlık, etiketler ve buton */}
+      {/* Proje başlık ve etiketler */}
       <div className="p-5 h-[35%] flex flex-col justify-between bg-background/90 transition-all duration-300 group-hover:bg-background/80">
         <div>
           <div className="flex flex-wrap gap-2 mb-2">
