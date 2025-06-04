@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "optimize": "node scripts/optimize-images.js && node scripts/optimize-pdfs.js",
-    "build": "npm run optimize && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "analyze": "set ANALYZE=true && npm run build"
