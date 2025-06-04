@@ -159,7 +159,7 @@ This project is licensed under the [MIT](LICENSE) License.
 ## 📬 Contact
 
 - **Website**: [aliolkac.com.tr](https://aliolkac.com.tr)
-- **Email**: [iletisim@aliolkac.com](mailto:iletisim@aliolkac.com)
+- **Email**: [iletisim@aliolkac.com](mailto:aliolkac43@gmail.com)
 - **GitHub**: [@aliolkac](https://github.com/aliolkac)
 - **LinkedIn**: [Ali Olkaç](https://linkedin.com/in/aliolkac)
 
