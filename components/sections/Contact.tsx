@@ -86,6 +86,7 @@ const Contact = () => {
                   whileHover={{ scale: 1.05 }}
                   className="flex items-center p-5 bg-black/20 rounded-lg border border-primary/30 hover:border-primary/60 transition-all duration-300"
                 >
+                  {/* Sosyal medya ikonunu gösteriyoruz */}
                   <div className="mr-4 text-primary">{link.icon}</div>
                   <div className="flex-1">
                     <h4 className="text-lg font-semibold text-white">{link.name}</h4>
@@ -98,6 +99,7 @@ const Contact = () => {
                       {link.username}
                     </Link>
                   </div>
+                  {/* Masaüstü için ok ikonları */}
                   <div className="hidden md:block">
                     <Link 
                       href={link.url} 
@@ -106,7 +108,7 @@ const Contact = () => {
                       className="relative w-[76px] h-[76px] block overflow-hidden outline-none bg-transparent cursor-pointer group"
                       aria-label={`Go to my ${link.name} account`}
                     >
-                      {/* Outer ring - normal state */}
+                      {/* Dış halka - normal durum */}
                       <span 
                         className="absolute inset-[7px] rounded-full border-3 border-primary transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:scale-[0.7]"
                         style={{
@@ -115,8 +117,7 @@ const Contact = () => {
                           transitionDelay: '80ms'
                         }}
                       ></span>
-                      
-                      {/* Outer ring - hover state */}
+                      {/* Dış halka - hover durumu */}
                       <span 
                         className="absolute inset-[7px] rounded-full border-4 border-blue-400 opacity-0 scale-[1.3] transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-100"
                         style={{
@@ -125,23 +126,36 @@ const Contact = () => {
                           transitionDelay: '80ms'
                         }}
                       ></span>
-                      
-                      {/* Icon box */}
+                      {/* Ok ikonları */}
                       <div className="absolute top-0 left-0 flex transition-transform duration-400 group-hover:translate-x-[-69px]">
-                        {/* First icon */}
+                        {/* İlk ok ikonu */}
                         <span className="block w-[30px] h-[30px] mt-[24px] mx-[22px]">
                           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-primary">
                             <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
                           </svg>
                         </span>
-                        
-                        {/* Second icon */}
+                        {/* İkinci ok ikonu */}
                         <span className="block w-[30px] h-[30px] mt-[24px] mx-[22px]">
                           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-primary">
                             <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
                           </svg>
                         </span>
                       </div>
+                    </Link>
+                  </div>
+                  {/* Mobil için ok ikonları - md altında görünür, daha küçük ve sade */}
+                  <div className="block md:hidden ml-2">
+                    <Link
+                      href={link.url}
+                      target={link.name !== 'Email' ? '_blank' : undefined}
+                      rel="noopener noreferrer"
+                      aria-label={`Go to my ${link.name} account`}
+                      className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 hover:bg-primary/40 transition-colors"
+                    >
+                      {/* Ok ikonu - mobilde daha küçük */}
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-primary">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
+                      </svg>
                     </Link>
                   </div>
                 </motion.div>
