@@ -19,7 +19,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'Ali Olkaç | Portfolio',
-  description: 'Bilgisayar Mühendisliği Öğrencisi & Full-Stack Developer',
+  description: 'Computer Engineer & Web/AI Developer',
   keywords: ['portfolio', 'developer', 'full-stack', 'web development', 'react', 'next.js'],
   authors: [{ name: 'Ali Olkaç' }],
   creator: 'Ali Olkaç',
@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     locale: 'tr_TR',
     url: 'https://aliolkac.com',
     title: 'Ali Olkaç | Portfolio',
-    description: 'Bilgisayar Mühendisliği Öğrencisi & Full-Stack Developer',
+    description: 'Computer Engineer & Web/AI Developer',
     siteName: 'Ali Olkaç Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ali Olkaç | Portfolio',
-    description: 'Bilgisayar Mühendisliği Öğrencisi & Full-Stack Developer',
+    description: 'Computer Engineer & Web/AI Developer',
     creator: '@aliolkac',
   },
 }

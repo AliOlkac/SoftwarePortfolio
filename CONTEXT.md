@@ -7,7 +7,7 @@ Bu proje, bilgisayar mühendisliği son sınıf öğrencisi tarafından oluştur
 Web sitesi **tek sayfa** yapıda olacak ve aşağıdaki bölümleri içerecektir:
 
 ### 1. Hero / Giriş
-- Kısa tanıtım yazısı (örneğin: “Bilgisayar Mühendisliği Öğrencisi & Full-Stack Developer”)
+- Kısa tanıtım yazısı (örneğin: “Computer Engineer & Web/AI Developer”)
 - Navigasyon bağlantıları: Hakkımda, Projeler, CV, İletişim
 
 ### 2. Hakkımda (About)
