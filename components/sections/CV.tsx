@@ -10,7 +10,7 @@ const CV = () => {
   // Path to CV PDF
   const cvPdfPath = '/cv/AliOLKAC_en_CV.pdf';
   // Paths to CV preview images (for multiple pages)
-  const cvPreviewImages = ['/cv/cv-preview.jpg'];
+  const cvPreviewImages = ['/cv/cv-preview.png'];
 
   return (
     <section id="cv" className="py-20">
