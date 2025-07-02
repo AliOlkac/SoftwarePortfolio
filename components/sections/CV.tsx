@@ -8,7 +8,7 @@ import { FaDownload, FaEye } from 'react-icons/fa';
 
 const CV = () => {
   // Path to CV PDF
-  const cvPdfPath = '/cv/AliOlkac_CV.pdf';
+  const cvPdfPath = '/cv/AliOLKAC_en_CV.pdf';
   // Paths to CV preview images (for multiple pages)
   const cvPreviewImages = ['/cv/cv-preview.jpg'];
 
@@ -206,7 +206,7 @@ const CV = () => {
               >
                 <Link
                   href={cvPdfPath}
-                  download="AliOlkac_CV.pdf"
+                  download="AliOLKAC_en_CV.pdf"
                   className="mt-8 w-full py-3 px-6 flex items-center justify-center bg-orange/20 hover:bg-orange/30 text-orange border border-orange/60 rounded-lg transition-all duration-300 shadow-orange-neon hover:shadow-[0_0_20px_rgba(255,165,0,0.9)] group"
                 >
                   <FaDownload className="mr-2 group-hover:animate-bounce" /> Download CV (PDF)
